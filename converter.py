@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 import sys
 
-def formatfile(filename):
+def readfile(filename):
     #readfile
     file = open(filename, mode='r', encoding='UTF-8')
     filereadlines = file.readlines()
@@ -10,63 +10,64 @@ def formatfile(filename):
     for i in filereadlines:
         if i == '\n':
             filereadlines.remove(i)
-            
-    #remove '\n' in line end
+    #remove '\n' in line end and middle
     for i in range(len(filereadlines)):
         filereadlines[i] = filereadlines[i].rstrip()
-
     return filereadlines
 
-def converterFromLocalStorage(filename):
-    filereadlines = formatfile(filename)
+def writefile(filename,filereadlines):
+    #write file
+    if '.txt' in filename:
+        filename = filename[:-4]
+    newfile = open(filename + '.md', mode='w', encoding='UTF-8')
+    newfile.writelines(filereadlines)
+    newfile.close()
 
+def converterFromLocalStorage(filename):
+    #readfile
+    filereadlines = readfile(filename)
     #remove '-------------------'
     for i in filereadlines:
         if '-------------------' in i:
             filereadlines.remove(i)
-            
     #bookname,author style
     filereadlines[0] = '# ' + filereadlines[0][13:-2]
     filereadlines[1] = '**' + filereadlines[1] + '**'
-
     #chapter,time,sentence style
     for i in range(2 , (len(filereadlines)) - 3 , 4):
         filereadlines[i] = '## ' + filereadlines[i]
         filereadlines[i + 1] = '*' + filereadlines[i + 1][3:] + '*'
         filereadlines[i + 2] =  '> [原文]' + filereadlines[i + 2][4:]
-        filereadlines[i + 3] = '> [批注]' + filereadlines[i + 3][4:]
-
+        #remove '\n' in highlights
+        if (filereadlines[i + 3][0] != '【'):
+            filereadlines[i + 2] = filereadlines[i + 2] + filereadlines[i + 3]
+            filereadlines.remove(filereadlines[i + 3])
+            filereadlines[i + 3] = '> [批注]' + filereadlines[i + 3][4:]
+        else:
+            filereadlines[i + 3] = '> [批注]' + filereadlines[i + 3][4:]
     #add blank lines
     for i in range(len(filereadlines)):
         filereadlines[i] = filereadlines[i] + '\n\n'
-
     #write file
-    newfile = open(filename + '.md', mode='w', encoding='UTF-8')
-    newfile.writelines(filereadlines)
-    newfile.close()
+    writefile(filename,filereadlines)
             
 def converterFromCloud(filename):
-    filereadlines = formatfile(filename)
-    
+    #readfile
+    filereadlines = readfile(filename)
     #bookname,author style
     filereadlines[0] = '# ' + filereadlines[0]
     filereadlines[1] = '**' + filereadlines[1] + '**'
-
     #chapter,time,sentence style
     for i in range(2 , (len(filereadlines) - 3) , 3):
         filereadlines[i] = '## ' + filereadlines[i]
         filereadlines[i + 1] = '*' + filereadlines[i + 1] + '*'
         filereadlines[i + 2] =  '> ' + filereadlines[i + 2]
     filereadlines[len(filereadlines) - 1] = '**' + filereadlines[len(filereadlines) - 1][1:] + '**'
-    
     #add blank lines
     for i in range(len(filereadlines)):
         filereadlines[i] = filereadlines[i] + '\n\n'
-
     #write file
-    newfile = open(filename + '.md', mode='w', encoding='UTF-8')
-    newfile.writelines(filereadlines)
-    newfile.close()
+    writefile(filename,filereadlines)
 
 def main(filename):
     #read file
