@@ -34,7 +34,7 @@ def converterFromLocalStorage(filename):
         filereadlines[i] = '## ' + filereadlines[i]
         filereadlines[i + 1] = '*' + filereadlines[i + 1][3:] + '*'
         filereadlines[i + 2] =  '> [原文]' + filereadlines[i + 2][4:]
-        filereadlines[i + 3] = '*[批注]' + filereadlines[i + 3][4:] + '*'
+        filereadlines[i + 3] = '> [批注]' + filereadlines[i + 3][4:]
 
     #add blank lines
     for i in range(len(filereadlines)):
