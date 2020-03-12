@@ -27,29 +27,36 @@ def converterFromLocalStorage(filename):
     #readfile
     filereadlines = readfile(filename)
     #remove '-------------------'
-    for i in filereadlines:
-        if '-------------------' in i:
-            filereadlines.remove(i)
-    #bookname,author style
-    filereadlines[0] = '# ' + filereadlines[0][13:-2]
-    filereadlines[1] = '**' + filereadlines[1] + '**'
-    #chapter,time,sentence style
-    for i in range(2 , (len(filereadlines)) - 3 , 4):
-        filereadlines[i] = '## ' + filereadlines[i]
-        filereadlines[i + 1] = '*' + filereadlines[i + 1][3:] + '*'
-        filereadlines[i + 2] =  '> [原文]' + filereadlines[i + 2][4:]
-        #remove '\n' in highlights
-        if (filereadlines[i + 3][0] != '【'):
-            filereadlines[i + 2] = filereadlines[i + 2] + filereadlines[i + 3]
-            filereadlines.remove(filereadlines[i + 3])
-            filereadlines[i + 3] = '> [批注]' + filereadlines[i + 3][4:]
-        else:
-            filereadlines[i + 3] = '> [批注]' + filereadlines[i + 3][4:]
-    #add blank lines
+    linenum = [1]
     for i in range(len(filereadlines)):
-        filereadlines[i] = filereadlines[i] + '\n\n'
+        if '-------------------' in filereadlines[i]:
+            linenum.append(i)
+    #bookname,author style
+    outputfile = []
+    outputfile.append('# ' + filereadlines[0][13:-2])
+    outputfile.append('**' + filereadlines[1] + '**')
+
+    #converter each highlight block to [][]
+    newcontent = []
+    for i in range(len(linenum) - 1):
+        eachcontent = []
+        for j in range(linenum[i] + 1, linenum[i + 1]):
+            eachcontent.append(filereadlines[j])
+        newcontent.append(eachcontent)
+    #format eachline to markdown
+    #chapter,time,sentence style
+    for i in range(len(newcontent)):
+        outputfile.append('## ' + newcontent[i][0])
+        outputfile.append('*' + newcontent[i][1][3:] + '*')
+        outputfile.append('> [原文]' + newcontent[i][2][4:])
+        for j in range(3, len(newcontent[i]) - 1):
+            outputfile.append('> [原文]' + newcontent[i][j])
+        outputfile.append('> [批注]' + newcontent[i][(len(newcontent[i]) - 1)][4:])
+    #add blank lines
+    for i in range(len(outputfile)):
+        outputfile[i] = outputfile[i] + '\n\n'
     #write file
-    writefile(filename,filereadlines)
+    writefile(filename,outputfile)
             
 def converterFromCloud(filename):
     #readfile
