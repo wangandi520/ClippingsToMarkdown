@@ -13,7 +13,7 @@ def readfile(filename):
     for i in filereadlines:
         if i == '\n':
             filereadlines.remove(i)
-    #remove '\n' in line end and middle
+    #remove '\n' in line end
     for i in range(len(filereadlines)):
         filereadlines[i] = filereadlines[i].rstrip()
     return filereadlines
@@ -46,7 +46,7 @@ def converterFromLocalStorage(filename):
                 eachcontent.append(filereadlines[j])
         newcontent.append(eachcontent)
     #format eachline to markdown
-    #chapter,time,sentence style
+    #chapter,time,content style
     for i in range(len(newcontent)):
         outputfile.append('**' + newcontent[i][0] + '**\n\n')
         outputfile.append('*' + newcontent[i][1][3:] + '*\n\n')
