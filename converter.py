@@ -1,7 +1,5 @@
 # -*- coding: UTF-8 -*-
 import sys
-import pathlib
-import os
 
 from pathlib import Path
 
