@@ -4,9 +4,8 @@ import sys
 #Programmed by Andy
 def readfile(filename):
     #readfile
-    file = open(filename, mode='r', encoding='UTF-8')
-    filereadlines = file.readlines()
-    file.close()
+    with open(filename, mode='r', encoding='UTF-8') as file:
+        filereadlines = file.readlines()
     #remove blank lines
     for i in filereadlines:
         if i == '\n':
@@ -90,8 +89,8 @@ def main(filename):
         converterFromCloud(filename)
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        filename = 'source.txt'
+    if len(sys.argv) != 2:
+        print('Please check your file name.')
     else:
         filename = sys.argv[1]
-    main(filename)
+        main(filename)
