@@ -24,6 +24,34 @@ def writefile(filename,filereadlines):
     newfile.writelines(filereadlines)
     newfile.close()
 
+def converterFromKindle(filename):
+    #readfile
+    filereadlines = readfile(filename)
+    #get '==========' line number
+    linenum = [-1]
+    for i in range(len(filereadlines)):
+        if '==========' in filereadlines[i]:
+            linenum.append(i)
+    outputfile = []
+    #converter each highlight block to [][]
+    newcontent = []
+    for i in range(len(linenum) - 1):
+        eachcontent = []
+        for j in range(linenum[i] + 1, linenum[i + 1]):
+            if filereadlines[j] != '':
+                eachcontent.append(filereadlines[j])
+        newcontent.append(eachcontent)
+    #format eachline to markdown
+    #chapter,time,content style
+    for i in range(len(newcontent)):
+        outputfile.append('**' + newcontent[i][0] + '**\n\n')
+        outputfile.append('*' + newcontent[i][1] + '*\n\n')
+        if len(newcontent[i]) >= 3:
+            outputfile.append('> ' + newcontent[i][2] + '\n\n')
+        outputfile.append('---\n\n')
+    #write file
+    writefile(filename,outputfile)
+
 def converterFromLocalStorage(filename):
     #readfile
     filereadlines = readfile(filename)
@@ -50,9 +78,10 @@ def converterFromLocalStorage(filename):
     for i in range(len(newcontent)):
         outputfile.append('**' + newcontent[i][0] + '**\n\n')
         outputfile.append('*' + newcontent[i][1][3:] + '*\n\n')
-        outputfile.append('> [原文]' + newcontent[i][2][4:] + '\n\n')
+        outputfile.append('> [原文]' + newcontent[i][2][4:])
         for j in range(3, len(newcontent[i]) - 1):
-            outputfile.append('> [原文]' + newcontent[i][j])
+            outputfile[-1] = outputfile[-1] + newcontent[i][j] + '\n\n'
+        outputfile[-1] = outputfile[-1].rstrip() + '\n\n'
         outputfile.append('*[批注]' + newcontent[i][(len(newcontent[i]) - 1)][4:] + '*\n\n')
         outputfile.append('---\n\n')
     #write file
@@ -81,10 +110,11 @@ def main(filename):
     file = open(filename, mode='r', encoding='UTF-8')
     firstline = file.readline()
 
-    #Judge highlights from cloud note:onenote and evernote (False) or boox local storage (True)
-    fromLocalStorage = 'BOOX读书笔记' in firstline
-    if fromLocalStorage:
+    #Judge highlights from cloud note:onenote and evernote (False) or boox local storage (True) or kindle My Clippings.txt
+    if 'BOOX读书笔记' in firstline:
         converterFromLocalStorage(filename)
+    elif filename.name == 'My Clippings.txt':
+        converterFromKindle(filename)
     else:
         converterFromCloud(filename)
 
