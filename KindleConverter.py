@@ -44,7 +44,7 @@ def converter(filename):
     #format eachline to markdown
     #chapter,time,sentence style
     for i in range(len(newcontent)):
-        outputfile.append('## ' + newcontent[i][0] + '\n\n')
+        outputfile.append('**' + newcontent[i][0] + '**\n\n')
         outputfile.append('*' + newcontent[i][1] + '*\n\n')
         if len(newcontent[i]) >= 3:
             outputfile.append('> ' + newcontent[i][2] + '\n\n')
