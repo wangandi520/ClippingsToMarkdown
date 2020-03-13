@@ -3,8 +3,8 @@
 ## Converter Boox eink reader highlight to markdown
 
 input:
-if no argument,like python converter.py, it converter all .txt file in the folder
-if with arguments,like python converter.py 1.txt 2.txt, it only converter this two files
+if no argument,like python converter.py, it converter all .txt file in the folder(include sub folder)
+if with arguments,like python converter.py originfilename1.txt originfilename2.txt, it only converter this two files to .md
 
 output:
 originfilename.md

@@ -36,10 +36,10 @@ def converterFromLocalStorage(filename):
     outputfile = []
     outputfile.append('# ' + filereadlines[0][13:-2])
     outputfile.append('**' + filereadlines[1] + '**')
-
     #converter each highlight block to [][]
     newcontent = []
     for i in range(len(linenum) - 1):
+        eachcontent = []
         for j in range(linenum[i] + 1, linenum[i + 1]):
             if filereadlines[j] != '':
                 eachcontent.append(filereadlines[j])
