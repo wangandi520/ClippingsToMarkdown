@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
 import sys
-
 def readfile(filename):
     #readfile
     file = open(filename, mode='r', encoding='UTF-8')
@@ -26,7 +25,7 @@ def writefile(filename,filereadlines):
 def converterFromLocalStorage(filename):
     #readfile
     filereadlines = readfile(filename)
-    #remove '-------------------'
+    #get '-------------------' line number
     linenum = [1]
     for i in range(len(filereadlines)):
         if '-------------------' in filereadlines[i]:
