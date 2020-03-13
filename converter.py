@@ -40,9 +40,9 @@ def converterFromLocalStorage(filename):
     #converter each highlight block to [][]
     newcontent = []
     for i in range(len(linenum) - 1):
-        eachcontent = []
         for j in range(linenum[i] + 1, linenum[i + 1]):
-            eachcontent.append(filereadlines[j])
+            if filereadlines[j] != '':
+                eachcontent.append(filereadlines[j])
         newcontent.append(eachcontent)
     #format eachline to markdown
     #chapter,time,sentence style
