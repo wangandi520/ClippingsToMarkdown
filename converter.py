@@ -1,6 +1,10 @@
 # -*- coding: UTF-8 -*-
 import sys
+import pathlib
 import os
+
+from pathlib import Path
+
 #Highlights format support in 20200313
 #Programmed by Andy
 def readfile(filename):
@@ -18,9 +22,7 @@ def readfile(filename):
 
 def writefile(filename,filereadlines):
     #write file
-    if '.txt' in filename:
-        filename = filename[:-4]
-    newfile = open(filename + '.md', mode='w', encoding='UTF-8')
+    newfile = open(filename.with_suffix('.md'), mode='w', encoding='UTF-8')
     newfile.writelines(filereadlines)
     newfile.close()
 
@@ -91,13 +93,8 @@ def main(filename):
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
-        allfilenames = os.listdir('./')
-        txtfilenames = []
-        for i in allfilenames:
-            if (os.path.splitext(i)[1] == '.txt'):
-                txtfilenames.append(i)
-        for i in txtfilenames:
-            main(i)
+        for filenames in Path('./').rglob('*.txt'):
+            main(filenames)
     elif len(sys.argv) >= 2:
         for i in range(1 , len(sys.argv)):
             main(sys.argv[i])
