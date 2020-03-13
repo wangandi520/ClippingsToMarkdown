@@ -1,5 +1,7 @@
 # -*- coding: UTF-8 -*-
 import sys
+#Highlights format support in 20200313
+#Programmed by Andy
 def readfile(filename):
     #readfile
     file = open(filename, mode='r', encoding='UTF-8')
