@@ -2,9 +2,14 @@
 
 converter Boox eink reader highlight to markdown
 
-input:source.txt
+input:
+if no argument,like python converter.py, it converter all .txt file in the folder
 
-output:markdown.md
+if with arguments,like python converter.py 1.txt 2.txt, it only converter this two files
+
+output:
+originfilename.md
+
 
 my blog post:https://my.oschina.net/wangandi/blog/3191259
 

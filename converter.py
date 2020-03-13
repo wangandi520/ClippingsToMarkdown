@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 import sys
+import os
 #Highlights format support in 20200313
 #Programmed by Andy
 def readfile(filename):
@@ -89,8 +90,14 @@ def main(filename):
         converterFromCloud(filename)
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print('Please check your file name.')
-    else:
-        filename = sys.argv[1]
-        main(filename)
+    if len(sys.argv) == 1:
+        allfilenames = os.listdir('./')
+        txtfilenames = []
+        for i in allfilenames:
+            if (os.path.splitext(i)[1] == '.txt'):
+                txtfilenames.append(i)
+        for i in txtfilenames:
+            main(i)
+    elif len(sys.argv) >= 2:
+        for i in range(1 , len(sys.argv)):
+            main(sys.argv[i])
