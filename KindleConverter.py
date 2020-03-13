@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 import sys
 
-from pathlib import Path
-
 #Highlights format support in 20200313
 #Programmed by Andy
 def readfile(filename):
