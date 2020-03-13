@@ -34,8 +34,9 @@ def converterFromLocalStorage(filename):
             linenum.append(i)
     #bookname,author style
     outputfile = []
-    outputfile.append('# ' + filereadlines[0][13:-2] + '**\n\n')
+    outputfile.append('# ' + filereadlines[0][13:-2] + '\n\n')
     outputfile.append('**' + filereadlines[1] + '**\n\n')
+    outputfile.append('---\n\n')
     #converter each highlight block to [][]
     newcontent = []
     for i in range(len(linenum) - 1):
@@ -52,7 +53,8 @@ def converterFromLocalStorage(filename):
         outputfile.append('> [原文]' + newcontent[i][2][4:] + '\n\n')
         for j in range(3, len(newcontent[i]) - 1):
             outputfile.append('> [原文]' + newcontent[i][j])
-        outputfile.append('> *[批注]' + newcontent[i][(len(newcontent[i]) - 1)][4:] + '*\n\n')
+        outputfile.append('*[批注]' + newcontent[i][(len(newcontent[i]) - 1)][4:] + '*\n\n')
+        outputfile.append('---\n\n')
     #write file
     writefile(filename,outputfile)
             

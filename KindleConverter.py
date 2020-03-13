@@ -48,6 +48,7 @@ def converter(filename):
         outputfile.append('*' + newcontent[i][1] + '*\n\n')
         if len(newcontent[i]) >= 3:
             outputfile.append('> ' + newcontent[i][2] + '\n\n')
+        outputfile.append('---\n\n')
     #write file
     writefile(filename,outputfile)
 
