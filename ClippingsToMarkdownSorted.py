@@ -27,7 +27,45 @@ def writefile(filename,filereadlines):
     newfile.writelines(filereadlines)
     newfile.close()
 
-def converterFromKindle(filename):
+def converterFromKindleSorted(filename):
+    #readfile
+    filereadlines = readfile(filename)
+    #get '==========' line number
+    linenum = [-1]
+    for i in range(len(filereadlines)):
+        if '==========' in filereadlines[i]:
+            linenum.append(i)
+    #converter each highlight block to [][]
+    newcontent = []
+    for i in range(len(linenum) - 1):
+        eachcontent = []
+        for j in range(linenum[i] + 1, linenum[i + 1]):
+            if filereadlines[j] != '':
+                eachcontent.append(filereadlines[j])
+        newcontent.append(eachcontent)
+    #format eachline to markdown
+    #chapter,time,content style
+    sortedcontent = {}
+    for i in range(len(newcontent)):
+        if newcontent[i][0] not in sortedcontent:
+            if len(newcontent[i]) >= 3:
+                sortedcontent[newcontent[i][0]]=[]
+                sortedcontent[newcontent[i][0]].append([newcontent[i][1] , newcontent[i][2]])
+        elif newcontent[i][0] in sortedcontent:
+            if len(newcontent[i]) >= 3:
+                sortedcontent[newcontent[i][0]].append([newcontent[i][1] , newcontent[i][2]])
+    outputfile = ['[TOC]\n\n---\n\n']
+    for key in sortedcontent:
+        outputfile.append('## ' + key + '\n\n')
+        for j in range(len(sortedcontent[key])):
+            outputfile.append('*' + sortedcontent[key][j][0] + '*\n\n')
+            outputfile.append('> ' + sortedcontent[key][j][1] + '\n\n')
+        outputfile.append('---\n\n')
+    outputfile[-1] = '---'
+    #write file
+    writefile(filename,outputfile)
+
+def converterFromKindleNatured(filename):
     #readfile
     filereadlines = readfile(filename)
     #get '==========' line number
@@ -115,8 +153,10 @@ def main(filename):
     #Judge highlights from cloud note:onenote and evernote (False) or boox local storage (True) or kindle My Clippings.txt
     if 'BOOX读书笔记' in firstline:
         converterFromLocalStorage(filename)
-    elif filename.name == 'My Clippings.txt':
-        converterFromKindle(filename)
+    elif filename.name == 'My Clippings.txt' and sys.argv[0] == 'ClippingsToMarkdown.py':
+        converterFromKindleNatured(filename)
+    elif filename.name == 'My Clippings.txt' and sys.argv[0] == 'ClippingsToMarkdownSorted.py':
+        converterFromKindleSorted(filename)
     else:
         converterFromCloud(filename)
 
