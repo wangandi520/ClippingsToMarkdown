@@ -1,8 +1,7 @@
 # -*- coding: UTF-8 -*-
 import sys
 import os
-
-from pathlib import Path
+import pathlib
 
 # Highlights format support in 20200313
 # support kindle , boox local and boox cloud
@@ -134,7 +133,7 @@ def converterFromCloud(filename):
     filereadlines = readfile(filename)
     #bookname,author style
     filereadlines[0] = '# ' + filereadlines[0] + '\n\n'
-    filereadlines[1] = '**' + filereadlines[1] + '**\n\n'
+    filereadlines[1] = '**' + filereadlines[1] + '**\n\n---\n\n'
     #chapter,time,sentence style
     for i in range(2 , (len(filereadlines) - 3) , 3):
         filereadlines[i] = '**' + filereadlines[i] + '**\n\n'
@@ -163,7 +162,7 @@ def main(filename):
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
-        for filenames in Path('./').rglob('*.txt'):
+        for filenames in pathlib.Path('./').rglob('*.txt'):
             main(filenames)
     elif len(sys.argv) >= 2:
         for i in range(1 , len(sys.argv)):
