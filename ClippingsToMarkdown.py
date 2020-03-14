@@ -127,5 +127,3 @@ if __name__ == '__main__':
     elif len(sys.argv) >= 2:
         for i in range(1 , len(sys.argv)):
             main(sys.argv[i])
-    for i in sys.argv:
-        print(i)
