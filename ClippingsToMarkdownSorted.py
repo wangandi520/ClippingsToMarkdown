@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 import sys
+import os
 
 from pathlib import Path
 
@@ -153,9 +154,9 @@ def main(filename):
     #Judge highlights from cloud note:onenote and evernote (False) or boox local storage (True) or kindle My Clippings.txt
     if 'BOOX读书笔记' in firstline:
         converterFromLocalStorage(filename)
-    elif filename.name == 'My Clippings.txt' and sys.argv[0] == 'ClippingsToMarkdown.py':
+    elif filename.name == 'My Clippings.txt' and os.path.basename(__file__) == 'ClippingsToMarkdown.py':
         converterFromKindleNatured(filename)
-    elif filename.name == 'My Clippings.txt' and sys.argv[0] == 'ClippingsToMarkdownSorted.py':
+    elif filename.name == 'My Clippings.txt' and os.path.basename(__file__) == 'ClippingsToMarkdownSorted.py':
         converterFromKindleSorted(filename)
     else:
         converterFromCloud(filename)
