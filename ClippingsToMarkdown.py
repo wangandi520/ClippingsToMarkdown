@@ -47,7 +47,7 @@ def converterFromKindle(filename):
     #format eachline to markdown
     #chapter,time,content style
     for i in range(len(newcontent)):
-        outputfile.append('**' + newcontent[i][0] + '**\n\n')
+        outputfile.append('## ' + newcontent[i][0] + '\n\n')
         outputfile.append('*' + newcontent[i][1] + '*\n\n')
         if len(newcontent[i]) >= 3:
             outputfile.append('> ' + newcontent[i][2] + '\n\n')
@@ -110,6 +110,8 @@ def main(filename):
     file = open(filename, mode='r', encoding='UTF-8')
     firstline = file.readline()
 
+    if (type(filename).__name__ == 'str'):
+        filename = Path(filename)
     #Judge highlights from cloud note:onenote and evernote (False) or boox local storage (True) or kindle My Clippings.txt
     if 'BOOX读书笔记' in firstline:
         converterFromLocalStorage(filename)
@@ -125,3 +127,5 @@ if __name__ == '__main__':
     elif len(sys.argv) >= 2:
         for i in range(1 , len(sys.argv)):
             main(sys.argv[i])
+    for i in sys.argv:
+        print(i)
