@@ -1,6 +1,8 @@
-# BooxHighlightToMarkdown
+# BooxAndKindleClippingsToMarkdown
 
 ## Converter Boox eink reader highlight to markdown
+
+**Auto detect kindle My Clippings.txt**
 
 input:
 

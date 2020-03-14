@@ -3,8 +3,11 @@ import sys
 
 from pathlib import Path
 
-#Highlights format support in 20200313
-#Programmed by Andy
+# Highlights format support in 20200313
+# support kindle , boox local and boox cloud
+# Programmed by Andy
+# v0.3
+
 def readfile(filename):
     #readfile
     with open(filename, mode='r', encoding='UTF-8') as file:
@@ -49,6 +52,7 @@ def converterFromKindle(filename):
         if len(newcontent[i]) >= 3:
             outputfile.append('> ' + newcontent[i][2] + '\n\n')
         outputfile.append('---\n\n')
+    outputfile[-1] = '---'
     #write file
     writefile(filename,outputfile)
 
@@ -63,8 +67,7 @@ def converterFromLocalStorage(filename):
     #bookname,author style
     outputfile = []
     outputfile.append('# ' + filereadlines[0][13:-2] + '\n\n')
-    outputfile.append('**' + filereadlines[1] + '**\n\n')
-    outputfile.append('---\n\n')
+    outputfile.append('**' + filereadlines[1] + '**\n\n---')
     #converter each highlight block to [][]
     newcontent = []
     for i in range(len(linenum) - 1):
@@ -76,14 +79,14 @@ def converterFromLocalStorage(filename):
     #format eachline to markdown
     #chapter,time,content style
     for i in range(len(newcontent)):
-        outputfile.append('**' + newcontent[i][0] + '**\n\n')
+        outputfile.append('\n\n**' + newcontent[i][0] + '**\n\n')
         outputfile.append('*' + newcontent[i][1][3:] + '*\n\n')
         outputfile.append('> [原文]' + newcontent[i][2][4:])
         for j in range(3, len(newcontent[i]) - 1):
             outputfile[-1] = outputfile[-1] + newcontent[i][j] + '\n\n'
         outputfile[-1] = outputfile[-1].rstrip() + '\n\n'
         outputfile.append('*[批注]' + newcontent[i][(len(newcontent[i]) - 1)][4:] + '*\n\n')
-        outputfile.append('---\n\n')
+        outputfile.append('---')
     #write file
     writefile(filename,outputfile)
             
@@ -91,17 +94,14 @@ def converterFromCloud(filename):
     #readfile
     filereadlines = readfile(filename)
     #bookname,author style
-    filereadlines[0] = '# ' + filereadlines[0]
-    filereadlines[1] = '**' + filereadlines[1] + '**'
+    filereadlines[0] = '# ' + filereadlines[0] + '\n\n'
+    filereadlines[1] = '**' + filereadlines[1] + '**\n\n'
     #chapter,time,sentence style
     for i in range(2 , (len(filereadlines) - 3) , 3):
-        filereadlines[i] = '## ' + filereadlines[i]
-        filereadlines[i + 1] = '*' + filereadlines[i + 1] + '*'
-        filereadlines[i + 2] =  '> ' + filereadlines[i + 2]
+        filereadlines[i] = '**' + filereadlines[i] + '**\n\n'
+        filereadlines[i + 1] = '*' + filereadlines[i + 1] + '*\n\n'
+        filereadlines[i + 2] =  '> ' + filereadlines[i + 2] + '\n\n---\n\n'
     filereadlines[len(filereadlines) - 1] = '**' + filereadlines[len(filereadlines) - 1][1:] + '**'
-    #add blank lines
-    for i in range(len(filereadlines)):
-        filereadlines[i] = filereadlines[i] + '\n\n'
     #write file
     writefile(filename,filereadlines)
 
