@@ -26,7 +26,7 @@ Auto detect kindle My Clippings.txt
 
 if you dont's want the clippings sorted as book. Change ClippingsToMarkdownSorted.py to ClippingsToMarkdown.py
 
-如果你想保留原来的标注顺序，请把文件名ClippingsToMarkdownSorted.py 改成 ClippingsToMarkdown.py
+**如果你想保留原来的标注顺序，请把文件名ClippingsToMarkdownSorted.py 改成 ClippingsToMarkdown.py**
 
 origin clippings file tested in 2020.03.13(My Clippings.txt created in 2018.10.14)
 
