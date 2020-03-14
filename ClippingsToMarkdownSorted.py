@@ -119,7 +119,7 @@ def converterFromLocalStorage(filename):
     for i in range(len(newcontent)):
         outputfile.append('\n\n**' + newcontent[i][0] + '**\n\n')
         outputfile.append('*' + newcontent[i][1][3:] + '*\n\n')
-        outputfile.append('> [原文]' + newcontent[i][2][4:])
+        outputfile.append('[原文]\n> ' + newcontent[i][2][4:])
         for j in range(3, len(newcontent[i]) - 1):
             outputfile[-1] = outputfile[-1] + newcontent[i][j] + '\n\n'
         outputfile[-1] = outputfile[-1].rstrip() + '\n\n'
