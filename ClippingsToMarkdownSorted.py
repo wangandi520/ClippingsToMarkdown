@@ -23,9 +23,8 @@ def readfile(filename):
 
 def writefile(filename,filereadlines):
     #write file
-    newfile = open(filename.with_suffix('.md'), mode='w', encoding='UTF-8')
-    newfile.writelines(filereadlines)
-    newfile.close()
+    with open(filename.with_suffix('.md'), mode='w', encoding='UTF-8') as newfile:
+        newfile.writelines(filereadlines)
 
 def converterFromKindleSorted(filename):
     #readfile
@@ -145,8 +144,8 @@ def converterFromCloud(filename):
 
 def main(filename):
     #read file
-    file = open(filename, mode='r', encoding='UTF-8')
-    firstline = file.readline()
+    with open(filename, mode='r', encoding='UTF-8') as file:
+        firstline = file.readline()
 
     if (type(filename).__name__ == 'str'):
         filename = Path(filename)
