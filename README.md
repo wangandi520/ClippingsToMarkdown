@@ -31,3 +31,9 @@ if you dont's want the clippings sorted as book. Change ClippingsToMarkdownSorte
 origin clippings file tested in 2020.03.13(My Clippings.txt created in 2018.10.14)
 
 标注文件测试成功在2020.03.13(My Clippings.txt 文件在 2018.10.14 生成)
+
+## Moon Reader
+
+In moon reader pro, bookmark, output to file, it can convert .mrexpt to .md file
+
+静读天下专业版中，书签，导出到文件，可以转换.mrexpt文件到.md
