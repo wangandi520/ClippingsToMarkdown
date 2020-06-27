@@ -1,6 +1,6 @@
-# BooxAndKindleClippingsToMarkdown
+# Boox,Kindle,Moon Reader Clippings To Markdown
 
-# 文石Boox和kindle标注转换为markdown格式
+# 将文石Boox、kindle、静读天下专业版的标注转换为markdown格式
 
 ## Boox eink reader
 
