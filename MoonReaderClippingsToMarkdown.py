@@ -13,11 +13,6 @@ def readfile(filename):
     #readfile
     with open(filename, mode='r', encoding='UTF-8') as file:
         filereadlines = file.readlines()
-    #remove blank lines
-    #for i in filereadlines:
-        #if i == '\n':
-            #filereadlines.remove(i)
-    #remove '\n' in line end
     for i in range(len(filereadlines)):
         filereadlines[i] = filereadlines[i].rstrip()
     return filereadlines
@@ -33,14 +28,16 @@ def converterFromMoonReadermrexpt(filename):
     filereadlines = readfile(filename)
     #bookname,author style
     eachcontent = []
-    #eachcontent.append(str(len(filereadlines)))
-    eachcontent.append('# ' + filereadlines[5] + '\n\n')
-    for i in range(16, len(filereadlines), 17):
-        eachcontent.append(filereadlines[i] + '\n\n')
+    eachcontent.append('# ' + filereadlines[5])
+    eachcontent.append('\n\n---')
+    for i in range(4, len(filereadlines), 17):
+        eachcontent.append('\n\n> ' + filereadlines[i+12] + '\n\n')
         #time
-        clippingTime = float(float(filereadlines[i+14])/1000) 
+        clippingTime = float(filereadlines[i+9])/1000
         clippingTimeTransfered = time.strftime("%Y.%m.%d %H:%M:%S", time.localtime(clippingTime))
-        eachcontent.append(str(clippingTimeTransfered))
+        eachcontent.append('*' + clippingTimeTransfered + '*\n\n')
+        eachcontent.append('---')
+    eachcontent.append('\n')
     #write file
     writefile(filename,eachcontent)
     
