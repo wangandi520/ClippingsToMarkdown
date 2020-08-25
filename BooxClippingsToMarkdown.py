@@ -72,7 +72,7 @@ def converterFromCloud(filename):
         filereadlines[i] = '**' + filereadlines[i] + '**\n\n'
         filereadlines[i + 1] = '*' + filereadlines[i + 1] + '*\n\n'
         filereadlines[i + 2] =  '> ' + filereadlines[i + 2] + '\n\n---\n\n'
-    filereadlines[len(filereadlines) - 1] = '**' + filereadlines[len(filereadlines) - 1][1:] + '**'
+    filereadlines[len(filereadlines) - 1] = '**' + filereadlines[len(filereadlines) - 1][0:] + '**'
     #write file
     writefile(filename,filereadlines)
 
