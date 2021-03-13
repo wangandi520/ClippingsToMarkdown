@@ -2,6 +2,7 @@
 import sys
 import os
 import pathlib
+import re
 
 # Highlights format support in 20200313
 # support kindle , boox local and boox cloud
@@ -64,17 +65,45 @@ def converterFromLocalStorage(filename):
 def converterFromCloud(filename):
     #readfile
     filereadlines = readfile(filename)
-    #bookname,author style
-    filereadlines[0] = '# ' + filereadlines[0] + '\n\n'
-    filereadlines[1] = '**' + filereadlines[1] + '**\n\n---\n\n'
-    #chapter,time,sentence style
-    for i in range(2 , (len(filereadlines) - 3) , 3):
-        filereadlines[i] = '**' + filereadlines[i] + '**\n\n'
-        filereadlines[i + 1] = '*' + filereadlines[i + 1] + '*\n\n'
-        filereadlines[i + 2] =  '> ' + filereadlines[i + 2] + '\n\n---\n\n'
-    filereadlines[len(filereadlines) - 1] = '**' + filereadlines[len(filereadlines) - 1][0:] + '**'
+    #output
+    outputfile = []
+    #title
+    outputfile.append('# ' + filereadlines[0] + '\n\n')
+    #author
+    outputfile.append('**' + filereadlines[1] + '**\n\n---\n\n')
+    #check time format
+    timereg = r'(\d{4}-\d{1,2}-\d{1,2}\s\d{1,2}:\d{1,2}:\d{1,2})'
+    indexnum = []
+    #get time line number in file
+    for i in range(0,len(filereadlines)):  
+        if re.match(timereg,filereadlines[i]):
+            indexnum.append(i)
+        elif filereadlines[i].startswith('BOOX读书笔记来自'):
+            indexnum.append(i + 1)
+    
+    #print(indexnum)
+    section = []
+    #split into sectionitem
+    for i in range(0,len(indexnum) - 1):
+        sectionitem = []
+        for j in range(indexnum[i] - 1,indexnum[i + 1] - 1):
+            sectionitem.append(filereadlines[j])
+        section.append(sectionitem)
+    for i in section:
+        outputfile.append('**' + i[0] + '**\n\n')
+        outputfile.append('*' + i[1] + '*\n\n')
+        j = 2
+        while j < len(i): 
+            outputfile.append('> ' + i[j] + '\n\n')
+            j = j + 1
+        outputfile.append('---\n\n')
+
+
+    
+    outputfile.append('*' + filereadlines[-1] + '*\n')
+    print(outputfile)
     #write file
-    writefile(filename,filereadlines)
+    writefile(filename,outputfile)
 
 def main(filename):
     #read file
