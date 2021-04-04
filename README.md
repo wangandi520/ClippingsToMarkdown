@@ -24,6 +24,10 @@
 
 我，笔记，书名，右上角，复制到剪贴板，复制到.txt文件中后运行WereadClippingsToMarkdown.py
 
+## KOReader
+
+菜单，印象笔记，选中导出到本地json文件，点到处所有笔记，复制KOReaderClipping.json，运行KOReaderJsonALL.py
+
 ## Boox eink reader
 
 if with no arguments, it convert all .txt file in the folder(include subs)，origin .txt not deleted
@@ -43,3 +47,7 @@ In moon reader pro, bookmark, output to file, it can convert .mrexpt to .md file
 ## weread
 
 my,note,book,top right corner,copy to clipboard,copy contents to .txt and run WereadClippingsToMarkdown.py
+
+## KOReader
+
+menu,Evernote,Export to local json files,Export all notes in your library，copy KOReaderClipping.json，run KOReaderJsonALL.py

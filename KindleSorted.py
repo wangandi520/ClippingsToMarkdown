@@ -102,9 +102,9 @@ def main(filename):
     if (type(filename).__name__ == 'str'):
         filename = Path(filename)
     #Judge highlights from cloud note:onenote and evernote (False) or boox local storage (True) or kindle My Clippings.txt
-    if filename.name == 'My Clippings.txt' and os.path.basename(__file__) == 'KindleClippingsToMarkdown.py':
+    if filename.name == 'My Clippings.txt' and os.path.basename(__file__) == 'Kindle.py':
         converterFromKindleNatured(filename)
-    elif filename.name == 'My Clippings.txt' and os.path.basename(__file__) == 'KindleClippingsToMarkdownSorted.py':
+    elif filename.name == 'My Clippings.txt' and os.path.basename(__file__) == 'KindleSorted.py':
         converterFromKindleSorted(filename)
 
 if __name__ == '__main__':
