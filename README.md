@@ -16,11 +16,13 @@
 **如果你想保留原来的标注顺序，请把文件名ClippingsToMarkdownSorted.py 改成 ClippingsToMarkdown.py**
 标注文件测试成功在2020.03.13(My Clippings.txt 文件在 2018.10.14 生成)
 
-## Moon Reader
+## 静读天下专业版
 
 静读天下专业版中，书签，导出到文件，可以转换.mrexpt文件到.md
 
+## 微信读书
 
+我，笔记，书名，右上角，复制到剪贴板，复制到.txt文件中后运行WereadClippingsToMarkdown.py
 
 ## Boox eink reader
 
@@ -38,4 +40,6 @@ origin clippings file tested in 2020.03.13(My Clippings.txt created in 2018.10.1
 
 In moon reader pro, bookmark, output to file, it can convert .mrexpt to .md file
 
+## weread
 
+my,note,book,top right corner,copy to clipboard,copy contents to .txt and run WereadClippingsToMarkdown.py
