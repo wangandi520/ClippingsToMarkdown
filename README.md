@@ -2,6 +2,9 @@
 
 *https://andi.wang/*
 
+**基本用法(win10)**
+安装python:[https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe)，复制你的标注到文件见，运行对应的py文件
+
 **文石设备**
 
 如果没有参数，就转换当前文件夹下的所有.txt文件为.md，不删除源文件。
@@ -25,13 +28,16 @@
 
 **KOReader**
 
-菜单，印象笔记，选中导出到本地json文件，点到处所有笔记，复制KOReaderClipping.json，运行KOReaderJsonALL.py
+菜单，印象笔记，选中导出到本地json文件，点到处所有笔记，复制KOReaderClipping.json，运行KOReaderJsonALL.py。如果想每本书一个文件，请运行KOReaderJsonALLtoEachBook.py
 
 ---
 
 ## Boox,Kindle,Moon Reader pro,KOReader,Weread Clippings To Markdown
 
 *https://andi.wang/*
+
+**Basic usage(win10)**
+install python:[https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe),copy your clipping file to folder,run .py
 
 **Boox eink reader**
 
@@ -56,4 +62,4 @@ my,note,book,top right corner,copy to clipboard,copy contents to .txt and run We
 
 **KOReader**
 
-menu,Evernote,Export to local json files,Export all notes in your library，copy KOReaderClipping.json，run KOReaderJsonALL.py
+menu,Evernote,Export to local json files,Export all notes in your library，copy KOReaderClipping.json，run KOReaderJsonALL.py. If you want each book a .md file,please run KOReaderJsonALLtoEachBook.py

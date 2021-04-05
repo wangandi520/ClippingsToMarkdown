@@ -25,16 +25,16 @@ def readfile(filename):
     return filereadlines
 
 def writefile(filename,filereadlines):
-    #write file
-    newfile = open(filename.with_suffix('.md'), mode='w', encoding='UTF-8')
+    # write file
+    newfile = open(filename +'.md', mode='w', encoding='UTF-8')
     newfile.writelines(filereadlines)
     newfile.close()
             
 def converterFromJson(filename):
     # read json file
     allBooks = readfile(filename)
-    outputfile = []
     for eachBook in allBooks:
+        outputfile = []
         jsonData = json.loads(eachBook)
         outputfile.append('# ' + jsonData['title'] + '\n\n')
         for key in jsonData:
@@ -46,7 +46,7 @@ def converterFromJson(filename):
             except KeyError:
                 continue
         outputfile.append('---\n\n')
-    writefile(filename,outputfile)
+        writefile(jsonData['title'],outputfile)
 
 def main(filename):
     # read file
