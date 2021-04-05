@@ -6,8 +6,8 @@ import json
 import time
 import datetime
 
-# Highlights format support in 20200313
-# support kindle , boox local and boox cloud
+# Highlights format support in 20210405
+# support koreader json
 # Programmed by Andy
 # v0.3
 
@@ -33,9 +33,6 @@ def writefile(filename,filereadlines):
 def converterFromJson(filename):
     # read json file
     allBooks = readfile(filename)
-    # how many books
-    bookCount = len(allBooks)
-    
     outputfile = []
     for echoBook in allBooks:
         jsonData = json.loads(echoBook)
