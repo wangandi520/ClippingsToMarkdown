@@ -1,8 +1,9 @@
-## 将文石Boox,Kindle,静读天下专业版,微信读书,KOReader的标注转换为Markdown格式
+## 文石Boox,Kindle,静读天下专业版,微信读书,KOReader的标注转换为Markdown格式
 
 *https://andi.wang/*
 
 **基本用法(win10)**
+
 安装python:[https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe)，复制你的标注到文件见，运行对应的py文件
 
 **文石设备**
@@ -37,6 +38,7 @@
 *https://andi.wang/*
 
 **Basic usage(win10)**
+
 install python:[https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe),copy your clipping file to folder,run .py
 
 **Boox eink reader**
