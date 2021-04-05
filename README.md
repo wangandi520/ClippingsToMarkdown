@@ -1,4 +1,4 @@
-## 将文石Boox、kindle、静读天下专业版的标注转换为markdown格式
+## 将文石Boox,Kindle,静读天下专业版,微信读书,KOReader的标注转换为Markdown格式
 
 *https://andi.wang/*
 
@@ -29,7 +29,7 @@
 
 ---
 
-## Boox,Kindle,Moon Reader Clippings To Markdown
+## Boox,Kindle,Moon Reader pro,KOReader,Weread Clippings To Markdown
 
 *https://andi.wang/*
 
