@@ -4,10 +4,10 @@ import os
 import pathlib
 import re
 
-# Highlights format support in 20200313
+# Highlights format support in 20210407
 # support kindle , boox local and boox cloud
 # Programmed by Andy
-# v0.3
+# v0.4
 
 def readfile(filename):
     #readfile
@@ -28,7 +28,7 @@ def writefile(filename,filereadlines):
     newfile.writelines(filereadlines)
     newfile.close()
 
-def converterFromLocalStorage(filename):
+def convertFromLocalStorage(filename):
     #readfile
     filereadlines = readfile(filename)
     #get '-------------------' line number
@@ -52,64 +52,37 @@ def converterFromLocalStorage(filename):
     #chapter,time,content style
     # Boox OS 3.1 new line for page number
     for i in range(len(newcontent)):
-        outputfile.append('\n\n**' + newcontent[i][0] + '**\n\n')
-        outputfile.append('*' + newcontent[i][1][3:] + '*\n\n')
-        outputfile.append('[原文]\n\n> ' + newcontent[i][2][4:])
-        if newcontent[i][3][4:]:
-            outputfile.append('\n\n[评论]\n\n> ' + newcontent[i][3][4:])
+        if not newcontent[i][0].startswith('时间：'):
+            lastChapterName = newcontent[i][0]
+            print(lastChapterName)
+        if newcontent[i][0].startswith('时间：'):
+            #print(newcontent[i][0])
+            outputfile.append('\n\n**' + lastChapterName + '**\n\n')
+            outputfile.append('*' + newcontent[i][0][3:] + '*\n\n')
+            outputfile.append('[原文]\n\n> ' + newcontent[i][1][4:])
+            if newcontent[i][2][4:]:
+                outputfile.append('\n\n[评论]\n\n> ' + newcontent[i][2][4:])
         #for j in range(3, len(newcontent[i]) - 1):
             #outputfile[-1] = outputfile[-1] + newcontent[i][j] + '\n\n'
-        outputfile[-1] = outputfile[-1].rstrip() + '\n\n'
-        outputfile.append('[页码]' + newcontent[i][(len(newcontent[i]) - 1)][4:] + '\n\n')
-        outputfile.append('---')
+            outputfile[-1] = outputfile[-1].rstrip() + '\n\n'
+            outputfile.append('[页码]' + newcontent[i][(len(newcontent[i]) - 1)][4:] + '\n\n')
+            outputfile.append('---')
+        else:
+            #print(newcontent[i][0])
+            outputfile.append('\n\n**' + newcontent[i][0] + '**\n\n')
+            outputfile.append('*' + newcontent[i][1][3:] + '*\n\n')
+            outputfile.append('[原文]\n\n> ' + newcontent[i][2][4:])
+            if newcontent[i][3][4:]:
+                outputfile.append('\n\n[评论]\n\n> ' + newcontent[i][3][4:])
+        #for j in range(3, len(newcontent[i]) - 1):
+            #outputfile[-1] = outputfile[-1] + newcontent[i][j] + '\n\n'
+            outputfile[-1] = outputfile[-1].rstrip() + '\n\n'
+            outputfile.append('[页码]' + newcontent[i][(len(newcontent[i]) - 1)][4:] + '\n\n')
+            outputfile.append('---')
+            
     #write file
     writefile(filename,outputfile)
             
-def converterFromCloud(filename):
-    #readfile
-    filereadlines = readfile(filename)
-    #output
-    outputfile = []
-    #title
-    outputfile.append('# ' + filereadlines[0] + '\n\n')
-    #author
-    outputfile.append('**' + filereadlines[1] + '**\n\n---\n\n')
-    #check time format
-    timereg = r'(\d{4}-\d{1,2}-\d{1,2}\s\d{1,2}:\d{1,2}:\d{1,2})'
-    indexnum = []
-    #get time line number in file
-    for i in range(0,len(filereadlines)):  
-        if re.match(timereg,filereadlines[i]):
-            indexnum.append(i)
-        elif filereadlines[i].startswith('BOOX读书笔记来自'):
-            indexnum.append(i + 1)
-    
-    #print(indexnum)
-    section = []
-    #split into sectionitem
-    for i in range(0,len(indexnum) - 1):
-        sectionitem = []
-        for j in range(indexnum[i] - 1,indexnum[i + 1] - 1):
-            sectionitem.append(filereadlines[j])
-        section.append(sectionitem)
-    for i in section:
-        outputfile.append('**' + i[0] + '**\n\n')
-        outputfile.append('*' + i[1] + '*\n\n')
-        j = 2
-        while j < len(i): 
-            if i[j].startswith('注 |'):
-                outputfile.append('[评论] ' + i[j][4:] + '\n\n')
-            else:
-                outputfile.append('> ' + i[j] + '\n\n')
-            j = j + 1
-        outputfile.append('---\n\n')
-
-
-    
-    outputfile.append('*' + filereadlines[-1] + '*\n')
-    print(outputfile)
-    #write file
-    writefile(filename,outputfile)
 
 def main(filename):
     #read file
@@ -119,10 +92,8 @@ def main(filename):
     if (type(filename).__name__ == 'str'):
         filename = Path(filename)
     #Judge highlights from cloud note:onenote and evernote (False) or boox local storage (True) or kindle My Clippings.txt
-    if 'BOOX读书笔记' in firstline and filename.name != 'My Clippings.txt':
-        converterFromLocalStorage(filename)
-    elif filename.name != 'My Clippings.txt':
-        converterFromCloud(filename)
+    if filename.name != 'My Clippings.txt':
+        convertFromLocalStorage(filename)
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
