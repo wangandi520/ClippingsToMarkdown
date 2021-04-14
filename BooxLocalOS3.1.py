@@ -39,7 +39,7 @@ def convertFromLocalStorage(filename):
     #bookname,author style
     outputfile = []
     outputfile.append('# ' + filereadlines[0][13:-2] + '\n\n')
-    outputfile.append('**' + filereadlines[1] + '**\n\n---')
+    outputfile.append('**' + filereadlines[1] + '**\n\n---\n\n')
     #converter each highlight block to [][]
     newcontent = []
     for i in range(len(linenum) - 1):
@@ -48,38 +48,29 @@ def convertFromLocalStorage(filename):
             if filereadlines[j] != '':
                 eachcontent.append(filereadlines[j])
         newcontent.append(eachcontent)
-    #format eachline to markdown
-    #chapter,time,content style
+    # format eachline to markdown
+    # chapter,time,content style
     # Boox OS 3.1 new line for page number
     for i in range(len(newcontent)):
-        if not newcontent[i][0].startswith('时间：'):
-            lastChapterName = newcontent[i][0]
-            print(lastChapterName)
+        start = 0
         if newcontent[i][0].startswith('时间：'):
-            #print(newcontent[i][0])
-            outputfile.append('\n\n**' + lastChapterName + '**\n\n')
-            outputfile.append('*' + newcontent[i][0][3:] + '*\n\n')
-            outputfile.append('[原文]\n\n> ' + newcontent[i][1][4:])
-            if newcontent[i][2][4:]:
-                outputfile.append('\n\n[评论]\n\n> ' + newcontent[i][2][4:])
-        #for j in range(3, len(newcontent[i]) - 1):
-            #outputfile[-1] = outputfile[-1] + newcontent[i][j] + '\n\n'
-            outputfile[-1] = outputfile[-1].rstrip() + '\n\n'
-            outputfile.append('[页码]' + newcontent[i][(len(newcontent[i]) - 1)][4:] + '\n\n')
-            outputfile.append('---')
+            start = 0
         else:
-            #print(newcontent[i][0])
-            outputfile.append('\n\n**' + newcontent[i][0] + '**\n\n')
-            outputfile.append('*' + newcontent[i][1][3:] + '*\n\n')
-            outputfile.append('[原文]\n\n> ' + newcontent[i][2][4:])
-            if newcontent[i][3][4:]:
-                outputfile.append('\n\n[评论]\n\n> ' + newcontent[i][3][4:])
-        #for j in range(3, len(newcontent[i]) - 1):
-            #outputfile[-1] = outputfile[-1] + newcontent[i][j] + '\n\n'
-            outputfile[-1] = outputfile[-1].rstrip() + '\n\n'
-            outputfile.append('[页码]' + newcontent[i][(len(newcontent[i]) - 1)][4:] + '\n\n')
-            outputfile.append('---')
-            
+            outputfile.append('**' + newcontent[i][0] + '**\n\n')
+            start = 1
+        outputfile.append('*' + newcontent[i][start][3:] + '*\n\n')
+        outputfile.append('[原文]\n\n')
+        start = start + 1
+        for j in range(start, len(newcontent[i])):
+            if newcontent[i][j].startswith('【原文】'):
+                outputfile.append('> ' + newcontent[i][j][4:] + '\n\n')
+            elif newcontent[i][j].startswith('【批注】'):
+                outputfile.append('[批注]\n\n> ' + newcontent[i][j][4:] + '\n\n')
+            elif newcontent[i][j].startswith('【页码】'):
+                outputfile.append('[页码]' + newcontent[i][j][4:] + '\n\n')
+            else:
+                outputfile.append('> ' + newcontent[i][j] + '\n\n')
+        outputfile.append('---\n\n')    
     #write file
     writefile(filename,outputfile)
             
