@@ -57,7 +57,7 @@ copy My Clippings.txt,run KindleSorted.py
 
 **Moon Reader pro**
 
-In moon reader pro,bookmark, output to file,copy .mrexpt,run MoonReaderPro.py
+In moon reader pro,bookmark, output to file,copy .mrexpt,drag .mrexpt or folder to MoonReaderPro.py
 
 **weread**
 
