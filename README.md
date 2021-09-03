@@ -22,7 +22,7 @@
 
 **静读天下专业版**
 
-静读天下专业版中，书签，导出到文件，复制.mrexpt文件，运行MoonReaderPro.py
+静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或文件到MoonReaderPro.py，自动识别.mrexpt文件并转换
 
 **微信读书**
 
