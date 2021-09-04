@@ -43,12 +43,10 @@ def convertMoonReadermrexpt(filename):
 def main(inputPath):
     del inputPath[0]
     for aPath in inputPath:
-        print(aPath)
         if Path.is_dir(Path(aPath)):
             for file in Path(aPath).glob('*.mrexpt'):
                 convertMoonReadermrexpt(file)
         if Path.is_file(Path(aPath)):
-            print(Path(aPath).suffix)
             if (Path(aPath).suffix == '.mrexpt'):
                 convertMoonReadermrexpt(aPath)
         

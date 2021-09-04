@@ -1,15 +1,15 @@
-# -*- coding: UTF-8 -*-
+# encoding:utf-8
+# Highlights format support in 20210904
+# tested koreader android 2021.09
+# Programmed by Andy
+# v0.4
+
+from pathlib import Path
 import sys
 import os
-import pathlib
 import json
 import time
 import datetime
-
-# Highlights format support in 20210405
-# support koreader json
-# Programmed by Andy
-# v0.3
 
 def readfile(filename):
     # readfile
@@ -30,36 +30,36 @@ def writefile(filename,filereadlines):
     newfile.writelines(filereadlines)
     newfile.close()
             
-def converterFromJson(filename):
+def converterFromKOReaderJson(filename):
     # read json file
     allBooks = readfile(filename)
     for eachBook in allBooks:
         outputfile = []
         jsonData = json.loads(eachBook)
-        outputfile.append('# ' + jsonData['title'] + '\n\n')
+        outputfile.append('# ' + jsonData['title'] + '\n\n---\n\n')
         for key in jsonData:
             try:
                 outputfile.append('> ' + jsonData[key][0]['text'] + '\n\n')
-                outputfile.append('*' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(jsonData[key][0]['time'])) + '*\n\n')
+                outputfile.append('*' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(jsonData[key][0]['time'])) + '*\n\n---\n\n')
             except TypeError:
                 continue
             except KeyError:
                 continue
-        outputfile.append('---\n\n')
         writefile(jsonData['title'],outputfile)
 
-def main(filename):
-    # read file
-    file = open(filename, mode='r', encoding='UTF-8')
-    firstline = file.readline()
-    if (type(filename).__name__ == 'str'):
-        filename = Path(filename)
-    converterFromJson(filename)
+def main(inputPath):
+    del inputPath[0]
+    for aPath in inputPath:
+        if Path.is_dir(Path(aPath)):
+            for file in Path(aPath).glob('*.json'):
+                converterFromKOReaderJson(file)
+        if Path.is_file(Path(aPath)):
+            if (Path(aPath).suffix == '.json'):
+                converterFromKOReaderJson(aPath)
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
-        for filenames in pathlib.Path('./').rglob('*.json'):
-            main(filenames)
-    elif len(sys.argv) >= 2:
-        for i in range(1 , len(sys.argv)):
-            main(sys.argv[i])
+    try:
+        if len(sys.argv) >= 2:
+            main(sys.argv)
+    except IndexError:
+        pass

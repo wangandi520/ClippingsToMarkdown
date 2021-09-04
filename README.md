@@ -30,7 +30,7 @@
 
 **KOReader**
 
-菜单，印象笔记，选中导出到本地json文件，点到处所有笔记，复制KOReaderClipping.json，运行KOReaderJsonALL.py。如果想每本书一个文件，请运行KOReaderJsonALLtoEachBook.py
+菜单，印象笔记，选中导出到本地json文件，点到处所有笔记，复制KOReaderClipping.json，拖拽json或文件夹到KOReaderJsonALL.py。如果想每本书一个文件，请运行KOReaderJsonALLtoEachBook.py
 
 ---
 
@@ -65,4 +65,4 @@ my,note,book,top right corner,copy to clipboard,copy contents to .txt and run We
 
 **KOReader**
 
-menu,Evernote,Export to local json files,Export all notes in your library，copy KOReaderClipping.json，run KOReaderJsonALL.py. If you want each book a .md file,please run KOReaderJsonALLtoEachBook.py
+menu,Evernote,Export to local json files,Export all notes in your library，copy KOReaderClipping.json，drag .json or folder to KOReaderJsonALL.py. If you want each book a .md file,please run KOReaderJsonALLtoEachBook.py
