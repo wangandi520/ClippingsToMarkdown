@@ -4,7 +4,7 @@
 
 **基本用法(win10)**
 
-安装python:[https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe)，复制你的标注到文件见，运行对应的py文件
+安装python:[https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe)，复制你的标注到文件夹，运行对应的py文件或者拖拽标注文件的py上
 
 **文石设备**
 
@@ -40,7 +40,7 @@
 
 **Basic usage(win10)**
 
-install python:[https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe),copy your clipping file to folder,run .py
+install python:[https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe),copy your clipping file to folder,run .py or drag your file onto .py
 
 **Boox eink reader**
 
