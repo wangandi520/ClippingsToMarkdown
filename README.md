@@ -22,7 +22,9 @@
 
 **静读天下专业版**
 
-静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或文件到MoonReaderPro.py，自动识别.mrexpt文件并转换
+静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或.mrexpt文件到MoonReaderPro.py
+
+新版支持拖拽
 
 **微信读书**
 
@@ -31,6 +33,8 @@
 **KOReader**
 
 菜单，印象笔记，选中导出到本地json文件，点到处所有笔记，复制KOReaderClipping.json，拖拽json或文件夹到KOReaderJsonALL.py。如果想每本书一个文件，请运行KOReaderJsonALLtoEachBook.py
+
+新版支持拖拽
 
 ---
 
@@ -57,7 +61,7 @@ copy My Clippings.txt,run KindleSorted.py
 
 **Moon Reader pro**
 
-In moon reader pro,bookmark, output to file,copy .mrexpt,drag .mrexpt or folder to MoonReaderPro.py
+In moon reader pro,bookmark, output to file, copy .mrexpt, drag .mrexpt or folder onto MoonReaderPro.py
 
 **weread**
 
