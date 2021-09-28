@@ -22,9 +22,15 @@
 
 **静读天下专业版**
 
+书签导出时选导出到文件(.mrexpt):MoonReaderProToMrexpt.py
+
 静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或.mrexpt文件到MoonReaderPro.py
 
 新版支持拖拽
+
+书签导出时选分享高亮与备注(TXT):MoonReaderProToTXT.py
+
+复制内容到txt文件，含章节信息，使用方法相同
 
 **微信读书**
 
@@ -60,8 +66,13 @@ origin clippings file tested in 2020.03.13(My Clippings.txt created in 2018.10.1
 copy My Clippings.txt,run KindleSorted.py
 
 **Moon Reader pro**
+in bookmark, chose output to file(.mrexpt):MoonReaderProToMrexpt.py
 
 In moon reader pro,bookmark, output to file, copy .mrexpt, drag .mrexpt or folder onto MoonReaderPro.py
+
+in bookmark, chose share clipping(TXT):MoonReaderProToTXT.py
+
+copy contents to TXT file, same
 
 **weread**
 
