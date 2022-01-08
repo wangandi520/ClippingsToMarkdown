@@ -28,9 +28,9 @@
 
 新版支持拖拽
 
-书签导出时选分享高亮与备注(TXT):MoonReaderProToTXT.py
+书签导出时选分享高亮与备注(TXT), 后选total commander，保存成txt文件:MoonReaderProToTXT.py, MoonReaderPro7.0ToTXT.py
 
-复制内容到txt文件，含章节信息，使用方法相同
+含章节信息，使用方法相同
 
 **微信读书**
 
