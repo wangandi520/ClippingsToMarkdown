@@ -37,7 +37,10 @@ def convertMoonReaderTXT(filename):
             eachcontent.append('---\n\n## ' + i[2:] + '\n')
         # time
         elif (i[0] != '\n'):
-            eachcontent.append('> ' + i[1:] + '\n')
+            if (i[0] != ' '):
+                eachcontent.append('> ' + i + '\n')
+            else:
+                eachcontent.append('> ' + i[1:] + '\n')
     
     eachcontent.append('---')
     # write file
