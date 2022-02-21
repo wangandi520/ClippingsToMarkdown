@@ -41,11 +41,11 @@ def convertFromLocalStorage(filename):
     # chapter,time,content style
     
     # if show time or not
-    showTime = 1
+    showTime = 0
     # if show annotations or not
-    showAnnotations = 1
+    showAnnotations = 0
     # if show page num
-    showPageNum = 1
+    showPageNum = 0
     
     count = 0
     for each in filereadlines:
