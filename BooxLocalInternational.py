@@ -1,7 +1,6 @@
 # -*- coding: UTF-8 -*-
 import sys
 import os
-import re
 from pathlib import Path
 
 # Highlights format support in 20220221
@@ -31,22 +30,14 @@ def writefile(filename,filereadlines):
 def convertFromLocalStorage(filename):
     #readfile
     filereadlines = readfile(filename)
-  
-    #bookname,author style
     outputfile = []
-    #outputfile.append('# ' + filereadlines[0][18:-2] + '\n\n')
-    #outputfile.append('**' + filereadlines[1] + '**\n\n---\n\n')
-
-    # format eachline to markdown
-    # chapter,time,content style
     
-    # if show time or not
+    # if show time = 1 or not = 0
     showTime = 0
-    # if show annotations or not
+    # if show annotations = 1 or not = 0
     showAnnotations = 0
-    # if show page num
+    # if show page num = 1or not = 0
     showPageNum = 0
-    
     count = 0
     for each in filereadlines:
         if each.startswith('Reading Notes*|*'):
@@ -64,8 +55,6 @@ def convertFromLocalStorage(filename):
         elif each.startswith("'-------------------"):
             outputfile.append('\n\n')
         count = count + 1
-        # else:
-            # outputfile.append('> ' + newcontent[i][j] + '\n\n')
     #write file
     writefile(filename,outputfile)
             
