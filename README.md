@@ -58,6 +58,8 @@ if with no arguments, it convert all .txt file in the folder(include subs)，ori
 if with arguments, it only convert the file to .md
 origin clippings file tested succeed in 2020.03.13
 
+BooxLocalInternational.py for https://github.com/wangandi520/ClippingsToMarkdown/issues/1
+
 **Kindle**
 
 Auto detect kindle My Clippings.txt
@@ -81,3 +83,4 @@ my,note,book,top right corner,copy to clipboard,copy contents to .txt and run We
 **KOReader**
 
 menu,Evernote,Export to local json files,Export all notes in your library，copy KOReaderClipping.json，drag .json or folder to KOReaderJsonALL.py. If you want each book a .md file,please run KOReaderJsonALLtoEachBook.py
+
