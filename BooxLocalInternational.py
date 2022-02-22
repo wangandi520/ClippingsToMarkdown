@@ -3,28 +3,31 @@ import sys
 import os
 from pathlib import Path
 
-# Highlights format support in 20220221
+# Highlights format support in 20220222
 # support kindle , boox local and boox cloud
 # Programmed by Andy
 # v0.2
 
 def readfile(filename):
-    #readfile
+    # readfile
     with open(filename, mode='r', encoding='UTF-8') as file:
         filereadlines = file.readlines()
+    # show open file location
     print('Open: ' + str(filename))
-    #remove blank lines
+    # remove blank lines
     for i in filereadlines:
         if i == '\n':
             filereadlines.remove(i)
-    #remove '\n' in line end
+    # remove '\n' in line end
     for i in range(len(filereadlines)):
         filereadlines[i] = filereadlines[i].rstrip()
     return filereadlines
 
 def writefile(filename,filereadlines):
-    #write file
+    # write file
+    # file name
     newfile = open(filename.with_suffix('.md'), mode='w', encoding='UTF-8')
+    # show file location
     print('Save: ' + str(filename.with_suffix('.md')))
     newfile.writelines(filereadlines)
     newfile.close()
@@ -34,35 +37,47 @@ def convertFromLocalStorage(filename):
     filereadlines = readfile(filename)
     outputfile = []
     
-    # if show time = 1 or not = 0
+    # show time = 1 or not = 0
     showTime = 0
-    # if show annotations = 1 or not = 0
+    # show annotations = 1 or not = 0
     showAnnotations = 0
-    # if show page num = 1or not = 0
+    # show page num = 1 or not = 0
     showPageNum = 0
+    # show author = 1 or not = 0
+    showAuthoer = 1
+    
     count = 0
     for each in filereadlines:
         if each.startswith('Reading Notes*|*'):
+            # bookname:
             outputfile.append('# ' + each[18:-2] + '\n\n')
-            if(filereadlines[count + 1] != "null"):
-                outputfile.append('**' + filereadlines[count + 1] + '**\n\n')
+            outputfile.append('Book: ' + each[18:-2] + '\n')
+            if(filereadlines[count + 1] != "null" and showAuthoer):
+                # author
+                outputfile.append('Author: ' + filereadlines[count + 1] + '\n\n')
+            else:
+                outputfile.append('\n')
         elif each.startswith('Time：') and showTime:
+            # time
             outputfile.append(each[5:] + '\n\n')
         elif each.startswith('【Original Text】'):
-            outputfile.append('> ' + each[15:] + '\n\n')
+            # paragraph
+            outputfile.append(each[15:] + '\n\n')
         elif each.startswith('【Annotations】') and showAnnotations and len(each) > 13:
+            # annotations
             outputfile.append('*' + each[13:] + '*\n\n')
         elif each.startswith('【Page Number】') and showPageNum:
+            # page number
             outputfile.append('*Page ' + each[13:] + '*\n\n')
         elif each.startswith("'-------------------"):
             outputfile.append('\n\n')
         count = count + 1
-    #write file
+    # write file
     writefile(filename,outputfile)
             
 
 def main(filename):
-    #read file
+    # read file
     file = open(filename, mode='r', encoding='UTF-8')
     firstline = file.readline()
 
@@ -72,6 +87,7 @@ def main(filename):
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
+        # origin file type: txt
         for filenames in pathlib.Path('./').rglob('*.txt'):
             main(filenames)
     elif len(sys.argv) >= 2:
