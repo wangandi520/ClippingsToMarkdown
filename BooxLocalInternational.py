@@ -6,12 +6,13 @@ from pathlib import Path
 # Highlights format support in 20220221
 # support kindle , boox local and boox cloud
 # Programmed by Andy
-# v0.1
+# v0.2
 
 def readfile(filename):
     #readfile
     with open(filename, mode='r', encoding='UTF-8') as file:
         filereadlines = file.readlines()
+    print('Open: ' + str(filename))
     #remove blank lines
     for i in filereadlines:
         if i == '\n':
@@ -24,6 +25,7 @@ def readfile(filename):
 def writefile(filename,filereadlines):
     #write file
     newfile = open(filename.with_suffix('.md'), mode='w', encoding='UTF-8')
+    print('Save: ' + str(filename.with_suffix('.md')))
     newfile.writelines(filereadlines)
     newfile.close()
 
@@ -66,9 +68,7 @@ def main(filename):
 
     if (type(filename).__name__ == 'str'):
         filename = Path(filename)
-    #Judge highlights from cloud note:onenote and evernote (False) or boox local storage (True) or kindle My Clippings.txt
-    if filename.name != 'My Clippings.txt':
-        convertFromLocalStorage(filename)
+    convertFromLocalStorage(filename)
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
