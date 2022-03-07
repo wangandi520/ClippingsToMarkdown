@@ -62,6 +62,8 @@ origin clippings file tested succeed in 2020.03.13
 
 BooxLocalInternational.py for https://github.com/wangandi520/ClippingsToMarkdown/issues/1
 
+BooxLocalInternational_anotherVersion.py https://github.com/wangandi520/ClippingsToMarkdown/issues/2
+
 **Kindle**
 
 Auto detect kindle My Clippings.txt
