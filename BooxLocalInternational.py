@@ -38,21 +38,22 @@ def convertFromLocalStorage(filename):
     outputfile = []
     
     # show time = 1 or not = 0
-    showTime = 0
+    showTime = 1
     # show annotations = 1 or not = 0
-    showAnnotations = 0
+    showAnnotations = 1
     # show page num = 1 or not = 0
-    showPageNum = 0
+    showPageNum = 1
     # show author = 1 or not = 0
-    showAuthoer = 1
+    showAuthor = 1
     
     count = 0
     for each in filereadlines:
-        if each.startswith('Reading Notes*|*'):
+        if each.startswith('Reading Notes'):
             # bookname:
             outputfile.append('# ' + each[18:-2] + '\n\n')
-            outputfile.append('Book: ' + each[18:-2] + '\n')
-            if(filereadlines[count + 1] != "null" and showAuthoer):
+            startIndex = each.find('<') + 2
+            outputfile.append('Book: ' + each[startIndex:-2] + '\n')
+            if(filereadlines[count + 1] != "null" and showAuthor):
                 # author
                 outputfile.append('Author: ' + filereadlines[count + 1] + '\n\n')
             else:
