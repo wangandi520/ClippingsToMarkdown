@@ -38,11 +38,11 @@ def convertFromLocalStorage(filename):
     outputfile = []
     
     # show time = 1 or not = 0
-    showTime = 1
+    showTime = 0
     # show annotations = 1 or not = 0
-    showAnnotations = 1
+    showAnnotations = 0
     # show page num = 1 or not = 0
-    showPageNum = 1
+    showPageNum = 0
     # show author = 1 or not = 0
     showAuthor = 1
     
