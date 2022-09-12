@@ -1,8 +1,8 @@
 # encoding:utf-8
-# Highlights format support in 20210903
-# tested Moon Reader Pro 6.9
+# Highlights format support in 20220912
+# tested Moon Reader Pro 7.6
 # Programmed by Andy
-# v0.4
+# v0.5
 
 from pathlib import Path
 import sys
@@ -18,7 +18,7 @@ def readfile(filename):
 
 def writefile(filename,filereadlines):
     # write file
-    newfile = open(Path(filename).stem + '.md', mode='w', encoding='UTF-8')
+    newfile = open(Path(filename).parent.joinpath(Path(filename).stem + '.md'), mode='w', encoding='UTF-8')
     newfile.writelines(filereadlines)
     newfile.close()
     
