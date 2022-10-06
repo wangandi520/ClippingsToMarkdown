@@ -1,4 +1,5 @@
 # encoding:utf-8
+# https://github.com/wangandi520/ClippingsToMarkdown
 # Highlights format support in 20220912
 # tested Moon Reader Pro 7.6
 # Programmed by Andy
