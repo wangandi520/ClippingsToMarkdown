@@ -1,9 +1,8 @@
 # encoding:utf-8
 # https://github.com/wangandi520/ClippingsToMarkdown
-# Highlights format support in 20220912
-# tested Moon Reader Pro 7.6
+# tested Moon Reader Pro 8.2
 # Programmed by Andy
-# v0.5
+# v0.6
 
 from pathlib import Path
 import sys
@@ -32,6 +31,8 @@ def convertMoonReadermrexpt(filename):
     eachcontent.append('\n\n---')
     for i in range(4, len(filereadlines), 17):
         eachcontent.append('\n\n> ' + filereadlines[i+12] + '\n\n')
+        if filereadlines[i+11] != '':
+            eachcontent.append('**' + filereadlines[i+11] + '**\n\n')
         # time
         clippingTime = float(filereadlines[i+9])/1000
         clippingTimeTransfered = time.strftime("%Y.%m.%d %H:%M:%S", time.localtime(clippingTime))
