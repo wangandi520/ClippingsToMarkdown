@@ -11,15 +11,21 @@
 **文石设备**
 
 如果没有参数，就转换当前文件夹下的所有.txt文件为.md，不删除源文件。
+
 如果有参数，就只转换那个文件
+
 只支持本地到处的标注，导出到印象笔记、onenote的暂不支持
+
 标注文件格式，在2020.03.13测试成功
 
 **Kindle**
 
 自动检测到My Clippings.txt
+
 *如果你想保留原来的标注顺序，KindleSorted.py 改成 Kindle.py*
+
 标注文件测试成功在2020.03.13(My Clippings.txt 文件在 2018.10.14 生成)
+
 复制My Clippings.txt，运行KindleSorted.py
 
 **静读天下专业版**
@@ -28,7 +34,7 @@
 
 静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或.mrexpt文件到MoonReaderPro.py
 
-新版支持拖拽
+新版支持拖拽，支持标注添加的评论
 
 书签导出时选分享高亮与备注(TXT), 后选total commander，保存成txt文件:MoonReaderProToTXT.py, MoonReaderPro7.0ToTXT.py
 
