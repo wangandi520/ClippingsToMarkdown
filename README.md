@@ -6,7 +6,7 @@
 
 **基本用法(win10)**
 
-安装python:[https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe)，复制你的标注到文件夹，运行对应的py文件或者拖拽标注文件的py上
+安装python:[https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe](https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe)，复制你的标注到文件夹，运行对应的py文件或者拖拽标注文件的py上
 
 **文石设备**
 
@@ -58,12 +58,14 @@
 
 **Basic usage(win10)**
 
-install python:[https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe](https://www.python.org/ftp/python/3.9.4/python-3.9.4-amd64.exe),copy your clipping file to folder,run .py or drag your file onto .py
+install python:[https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe](https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe),copy your clipping file to folder,run .py or drag your file onto .py
 
 **Boox eink reader**
 
 if with no arguments, it convert all .txt file in the folder(include subs)，origin .txt not deleted
+
 if with arguments, it only convert the file to .md
+
 origin clippings file tested succeed in 2020.03.13
 
 BooxLocalInternational.py for https://github.com/wangandi520/ClippingsToMarkdown/issues/1
@@ -73,8 +75,11 @@ BooxLocalInternational_anotherVersion.py https://github.com/wangandi520/Clipping
 **Kindle**
 
 Auto detect kindle My Clippings.txt
+
 if you dont's want the clippings sorted as book. Change KindleSorted.py to Kindle.py
+
 origin clippings file tested in 2020.03.13(My Clippings.txt created in 2018.10.14)
+
 copy My Clippings.txt,run KindleSorted.py
 
 **Moon Reader pro**
