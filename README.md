@@ -32,9 +32,11 @@
 
 书签导出时选导出到文件(.mrexpt):MoonReaderProToMrexpt.py
 
-静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或.mrexpt文件到MoonReaderPro.py
+静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或.MoonReaderProToMrexpt.py
 
 新版支持拖拽，支持标注添加的评论
+
+通样的方法拖拽到MoonReaderProToMrexptForHexo.py，生成的文件可以直接在Hexo博客里使用
 
 书签导出时选分享高亮与备注(TXT), 后选total commander，保存成txt文件:MoonReaderProToTXT.py, MoonReaderPro7.0ToTXT.py
 
@@ -85,7 +87,9 @@ copy My Clippings.txt,run KindleSorted.py
 **Moon Reader pro**
 in bookmark, chose output to file(.mrexpt):MoonReaderProToMrexpt.py
 
-In moon reader pro,bookmark, output to file, copy .mrexpt, drag .mrexpt or folder onto MoonReaderPro.py
+In moon reader pro,bookmark, output to file, copy .mrexpt, drag .mrexpt or folder onto MoonReaderProToMrexpt.py
+
+For Hexo blog, use MoonReaderProToMrexptForHexo.py
 
 in bookmark, chose share clipping(TXT):MoonReaderProToTXT.py
 
