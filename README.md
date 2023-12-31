@@ -10,6 +10,8 @@
 
 **文石设备**
 
+**文石设备的脚本可能不能用，设备已经二手出了，后续更新未知**
+
 如果没有参数，就转换当前文件夹下的所有.txt文件为.md，不删除源文件。
 
 如果有参数，就只转换那个文件
@@ -63,6 +65,8 @@
 install python:[https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe](https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe),copy your clipping file to folder,run .py or drag your file onto .py
 
 **Boox eink reader**
+
+**boox script maybe not work, device is sold, update not sure**
 
 if with no arguments, it convert all .txt file in the folder(include subs)，origin .txt not deleted
 
