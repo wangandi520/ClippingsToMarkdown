@@ -22,6 +22,7 @@ def writefile(filename,filereadlines):
     newfile = open(Path(filename).parent.joinpath(Path(filename).stem + '.md'), mode='w', encoding='UTF-8')
     newfile.writelines(filereadlines)
     newfile.close()
+    print('完成：' + str(Path(filename).name))
     
 def convertMoonReadermrexpt(filename):
     # 设置文章标签tags
@@ -32,11 +33,14 @@ def convertMoonReadermrexpt(filename):
     myFrontMatter = '---\ntitle: ' + str(Path(filename).stem) + '\ntoc: true\ntags:\n- ' + '\n- '.join(myTags) + '\ncategories: \n- ' + myCategories + '\ndate: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n---\n\n'
     # 读取文件
     filereadlines = readfile(filename)
+    print('处理：' + str(Path(filename).name))
     # 书名作者
     eachcontent = []
     eachcontent.append(myFrontMatter)
     eachcontent.append('# ' + filereadlines[5])
-    eachcontent.append('\n\n---')
+    eachcontent.append('\n---')
+    # 标注计数
+    clippingsCount = 0
     for i in range(4, len(filereadlines), 17):
         eachcontent.append('\n\n> ' + filereadlines[i+12] + '\n\n')
         if filereadlines[i+11] != '':
@@ -46,7 +50,11 @@ def convertMoonReadermrexpt(filename):
         clippingTimeTransfered = time.strftime("%Y.%m.%d %H:%M:%S", time.localtime(clippingTime))
         eachcontent.append('*' + clippingTimeTransfered + '*\n\n')
         eachcontent.append('---')
+        clippingsCount = clippingsCount + 1
     eachcontent.append('\n')
+    clippingsCount = '\n\n**共' + str(clippingsCount) + '条标注**\n'
+    # 如果不需要标注计数，请把下一行前加#
+    eachcontent.insert(2, clippingsCount)
     # 写入.md文件
     writefile(filename,eachcontent)
     

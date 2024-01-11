@@ -9,7 +9,7 @@ import sys
 import time
 
 def readfile(filename):
-    # readfile
+    # 读取文件
     with open(filename, mode='r', encoding='UTF-8') as file:
         filereadlines = file.readlines()
     for i in range(len(filereadlines)):
@@ -17,29 +17,38 @@ def readfile(filename):
     return filereadlines
 
 def writefile(filename,filereadlines):
-    # write file
+    # 写入.md文件
     newfile = open(Path(filename).parent.joinpath(Path(filename).stem + '.md'), mode='w', encoding='UTF-8')
     newfile.writelines(filereadlines)
     newfile.close()
+    print('完成：' + str(Path(filename).name))
     
 def convertMoonReadermrexpt(filename):
-    # readfile
+    # 读取.mrexpt文件
     filereadlines = readfile(filename)
-    # bookname,author style
+    print('处理：' + str(Path(filename).name))
+    # 书名作者
     eachcontent = []
     eachcontent.append('# ' + filereadlines[5])
-    eachcontent.append('\n\n---')
+    eachcontent.append('\n---')
+    # 标注计数
+    clippingsCount = 0
+    # 标注
     for i in range(4, len(filereadlines), 17):
         eachcontent.append('\n\n> ' + filereadlines[i+12] + '\n\n')
         if filereadlines[i+11] != '':
             eachcontent.append('**' + filereadlines[i+11] + '**\n\n')
-        # time
+        # 时间格式转换
         clippingTime = float(filereadlines[i+9])/1000
         clippingTimeTransfered = time.strftime("%Y.%m.%d %H:%M:%S", time.localtime(clippingTime))
         eachcontent.append('*' + clippingTimeTransfered + '*\n\n')
         eachcontent.append('---')
+        clippingsCount = clippingsCount + 1
     eachcontent.append('\n')
-    # write file
+    clippingsCount = '\n\n**共' + str(clippingsCount) + '条标注**\n'
+    # 如果不需要标注计数，请把下一行前加#
+    eachcontent.insert(1, clippingsCount)
+    # 写入
     writefile(filename,eachcontent)
     
 def main(inputPath):
