@@ -50,6 +50,8 @@ def convertMoonReadermrexpt(filename):
         clippingTimeTransfered = time.strftime("%Y.%m.%d %H:%M:%S", time.localtime(clippingTime))
         eachcontent.append('*' + clippingTimeTransfered + '*\n\n')
         eachcontent.append('---')
+        if clippingsCount == 0:
+            eachcontent.append('\n\n<!-- more -->')
         clippingsCount = clippingsCount + 1
     eachcontent.append('\n')
     clippingsCount = '\n\n**共' + str(clippingsCount) + '条标注**\n'
