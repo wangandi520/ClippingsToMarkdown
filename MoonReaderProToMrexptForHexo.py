@@ -19,7 +19,7 @@ def readfile(filename):
 
 def writefile(filename,filereadlines):
     # 写入.md文件
-    newfile = open(Path(filename).parent.joinpath(Path(filename).stem + '.md'), mode='w', encoding='UTF-8')
+    newfile = open(Path(filename).parent.joinpath(Path(filename).stem + '标注.md'), mode='w', encoding='UTF-8')
     newfile.writelines(filereadlines)
     newfile.close()
     print('完成：' + str(Path(filename).name))
@@ -30,14 +30,14 @@ def convertMoonReadermrexpt(filename):
     # 设置文章分类categories
     myCategories = '读书笔记'
     # 设置hexo文章头部信息Front-matter
-    myFrontMatter = '---\ntitle: ' + str(Path(filename).stem) + '\ntoc: true\ntags:\n- ' + '\n- '.join(myTags) + '\ncategories: \n- ' + myCategories + '\ndate: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n---\n\n'
+    myFrontMatter = '---\ntitle: ' + str(Path(filename).stem) + ' 标注\ntoc: true\ntags:\n- ' + '\n- '.join(myTags) + '\ncategories: \n- ' + myCategories + '\ndate: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n---\n\n'
     # 读取文件
     filereadlines = readfile(filename)
     print('处理：' + str(Path(filename).name))
     # 书名作者
     eachcontent = []
     eachcontent.append(myFrontMatter)
-    eachcontent.append('# ' + filereadlines[5])
+    eachcontent.append('# ' + Path(filereadlines[5]).stem)
     eachcontent.append('\n---')
     # 标注计数
     clippingsCount = 0
