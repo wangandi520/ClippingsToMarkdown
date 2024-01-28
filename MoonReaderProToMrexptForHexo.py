@@ -1,8 +1,9 @@
 # encoding:utf-8
 # https://github.com/wangandi520/ClippingsToMarkdown
-# tested Moon Reader Pro 8.6
+# tested Moon Reader Pro 9.0
 # Programmed by Andy
-# v0.1
+# v0.2
+# 2024.01.28
 # 转换出的markdown文件直接可以在hexo里使用
 
 from pathlib import Path
@@ -34,31 +35,46 @@ def convertMoonReadermrexpt(filename):
     # 读取文件
     filereadlines = readfile(filename)
     print('处理：' + str(Path(filename).name))
-    # 书名作者
-    eachcontent = []
-    eachcontent.append(myFrontMatter)
-    #eachcontent.append('# ' + Path(filereadlines[5]).stem)
-    eachcontent.append('\n---')
-    # 标注计数
-    clippingsCount = 0
+    # 存储所有标注
+    allContent = []
     for i in range(4, len(filereadlines), 17):
-        eachcontent.append('\n\n> ' + filereadlines[i+12] + '\n\n')
+        eachContent = []
+        # filereadlines[i+4] = 第几章，从0开始
+        # filereadlines[i+6] = 这一章内的位置
+        eachContent.append([int(filereadlines[i+4]), int(filereadlines[i+6])])
+        # 划线标注
+        eachContent.append(filereadlines[i+12])
+        # 手写的批注
         if filereadlines[i+11] != '':
-            eachcontent.append('**' + filereadlines[i+11] + '**\n\n')
-        # 时间转换
+            eachContent.append(filereadlines[i+11])
+        # 标注时间
         clippingTime = float(filereadlines[i+9])/1000
         clippingTimeTransfered = time.strftime("%Y.%m.%d %H:%M:%S", time.localtime(clippingTime))
-        eachcontent.append('*' + clippingTimeTransfered + '*\n\n')
-        eachcontent.append('---')
-        if clippingsCount == 0:
-            eachcontent.append('\n\n<!-- more -->')
-        clippingsCount = clippingsCount + 1
-    eachcontent.append('\n')
-    clippingsCount = '\n\n**共' + str(clippingsCount) + '条标注**\n'
-    # 如果不需要标注计数，请把下一行前加#
-    eachcontent.insert(1, clippingsCount)
+        eachContent.append(clippingTimeTransfered)
+        allContent.append(eachContent)
+    # 按照标注添加的时间顺序 = 1，还是按住标注所在书中的先后顺序 = 2，排列
+    getOrder = 2
+    if getOrder == 2:
+        allContentSorted = sorted(allContent, key=lambda x: (x[0]))
+    else:
+        allContentSorted = allContent
+    # 输出
+    outputContent = []
+    outputContent.append(myFrontMatter)
+    outputContent.append('\n\n**共' + str(len(allContentSorted)) + '条标注**\n\n---')
+    for myIndex in range(0, len(allContentSorted)):
+        outputContent.append('\n\n> ' + allContentSorted[myIndex][1] + '\n\n')
+        if len(allContentSorted[myIndex]) == 4:
+            outputContent.append('**' +allContentSorted[myIndex][2] + '**\n\n')
+            outputContent.append('*' + allContentSorted[myIndex][3] + '*\n\n')
+        elif len(allContentSorted[myIndex]) == 3:
+            outputContent.append('*' +allContentSorted[myIndex][2] + '*\n\n')
+        outputContent.append('---')
+        if myIndex == 1:
+            outputContent.append('\n\n<!-- more -->')
+        
     # 写入.md文件
-    writefile(filename,eachcontent)
+    writefile(filename, outputContent)
     
 def main(inputPath):
     del inputPath[0]

@@ -34,11 +34,11 @@
 
 书签导出时选导出到文件(.mrexpt):MoonReaderProToMrexpt.py
 
-静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或.MoonReaderProToMrexpt.py
+静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或.mrexpt到MoonReaderProToMrexpt.py
 
 新版支持拖拽，支持标注添加的评论
 
-通样的方法拖拽到MoonReaderProToMrexptForHexo.py，生成的文件可以直接在Hexo博客里使用
+通样的方法拖拽到MoonReaderProToMrexptForHexo.py，生成的文件可以直接在Hexo博客里使用，可以设置按照标注添加的时间顺序，还是按住标注所在书中的先后顺序，默认后者
 
 书签导出时选分享高亮与备注(TXT), 后选total commander，保存成txt文件:MoonReaderProToTXT.py, MoonReaderPro7.0ToTXT.py
 
