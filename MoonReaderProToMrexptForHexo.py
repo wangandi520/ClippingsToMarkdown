@@ -70,6 +70,7 @@ def convertMoonReadermrexpt(filename):
         elif len(allContentSorted[myIndex]) == 3:
             outputContent.append('*' +allContentSorted[myIndex][2] + '*\n\n')
         outputContent.append('---')
+        # 在主页显示几条标注，显示2条myIndex == 1
         if myIndex == 1:
             outputContent.append('\n\n<!-- more -->')
         
