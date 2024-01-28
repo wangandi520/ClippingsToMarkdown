@@ -30,14 +30,14 @@ def convertMoonReadermrexpt(filename):
     # 设置文章分类categories
     myCategories = '读书笔记'
     # 设置hexo文章头部信息Front-matter
-    myFrontMatter = '---\ntitle: ' + str(Path(filename).stem) + ' 标注\ntoc: true\ntags:\n- ' + '\n- '.join(myTags) + '\ncategories: \n- ' + myCategories + '\ndate: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n---\n\n'
+    myFrontMatter = '---\ntitle: ' + str(Path(filename).stem) + ' 标注\ntoc: true\ntags:\n- ' + '\n- '.join(myTags) + '\ncategories: \n- ' + myCategories + '\ndate: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n---'
     # 读取文件
     filereadlines = readfile(filename)
     print('处理：' + str(Path(filename).name))
     # 书名作者
     eachcontent = []
     eachcontent.append(myFrontMatter)
-    eachcontent.append('# ' + Path(filereadlines[5]).stem)
+    #eachcontent.append('# ' + Path(filereadlines[5]).stem)
     eachcontent.append('\n---')
     # 标注计数
     clippingsCount = 0
@@ -56,7 +56,7 @@ def convertMoonReadermrexpt(filename):
     eachcontent.append('\n')
     clippingsCount = '\n\n**共' + str(clippingsCount) + '条标注**\n'
     # 如果不需要标注计数，请把下一行前加#
-    eachcontent.insert(2, clippingsCount)
+    eachcontent.insert(1, clippingsCount)
     # 写入.md文件
     writefile(filename,eachcontent)
     
