@@ -1,9 +1,9 @@
 # encoding:utf-8
 # https://github.com/wangandi520/ClippingsToMarkdown
-# tested Moon Reader Pro 9.0
 # Programmed by Andy
-# v0.2
-# 2024.01.28
+# Moon Reader Pro 9.0
+# v0.3
+# 2024.02.08
 # 转换出的markdown文件直接可以在hexo里使用
 
 from pathlib import Path
@@ -30,29 +30,29 @@ def convertMoonReadermrexpt(filename):
     myTags = ['阅读', '标注', '读书笔记']
     # 设置文章分类categories
     myCategories = '读书笔记'
-    # 设置hexo文章头部信息Front-matter
+    # 设置hexo文章头部信息Front-matter，title，tags，categories，time
     myFrontMatter = '---\ntitle: ' + str(Path(filename).stem) + ' 标注\ntoc: true\ntags:\n- ' + '\n- '.join(myTags) + '\ncategories: \n- ' + myCategories + '\ndate: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n---'
-    # 读取文件
+    # 读取.mrexpt文件
     filereadlines = readfile(filename)
     print('处理：' + str(Path(filename).name))
     # 存储所有标注
     allContent = []
     for i in range(4, len(filereadlines), 17):
         eachContent = []
-        # filereadlines[i+4] = 第几章，从0开始
-        # filereadlines[i+6] = 这一章内的位置
+        # filereadlines[i+4] = 第几章，从0开始，chapter
+        # filereadlines[i+6] = 这一章内的位置，location in chapter
         eachContent.append([int(filereadlines[i+4]), int(filereadlines[i+6])])
-        # 划线标注
+        # 划线标注，underline clipping
         eachContent.append(filereadlines[i+12])
-        # 手写的批注
+        # 手写的批注，input clipping
         if filereadlines[i+11] != '':
             eachContent.append(filereadlines[i+11])
-        # 标注时间
+        # 标注时间，time
         clippingTime = float(filereadlines[i+9])/1000
         clippingTimeTransfered = time.strftime("%Y.%m.%d %H:%M:%S", time.localtime(clippingTime))
         eachContent.append(clippingTimeTransfered)
         allContent.append(eachContent)
-    # 按照标注添加的时间顺序 = 1，还是按住标注所在书中的先后顺序 = 2，排列
+    # 按照标注添加的时间顺序 = 1，order by time，还是按住标注所在书中的先后顺序 = 2，order by location，排列
     getOrder = 2
     if getOrder == 2:
         allContentSorted = sorted(allContent, key=lambda x: (x[0]))
@@ -73,7 +73,6 @@ def convertMoonReadermrexpt(filename):
         # 在主页显示几条标注，显示2条myIndex == 1
         if myIndex == 1:
             outputContent.append('\n\n<!-- more -->')
-        
     # 写入.md文件
     writefile(filename, outputContent)
     
@@ -81,8 +80,9 @@ def main(inputPath):
     del inputPath[0]
     for aPath in inputPath:
         if Path.is_dir(Path(aPath)):
-            for file in Path(aPath).glob('*.mrexpt'):
-                convertMoonReadermrexpt(file)
+            for eachFile in Path(aPath).glob('**/*'):
+                if (Path(eachFile).suffix == '.mrexpt'):
+                    convertMoonReadermrexpt(eachFile)
         if Path.is_file(Path(aPath)):
             if (Path(aPath).suffix == '.mrexpt'):
                 convertMoonReadermrexpt(aPath)
