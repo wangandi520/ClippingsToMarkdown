@@ -1,6 +1,6 @@
 ## 博客原文
 
-https://andi.wang/2021/03/15/%E6%96%87%E7%9F%B3Boox,Kindle,%E9%9D%99%E8%AF%BB%E5%A4%A9%E4%B8%8B%E4%B8%93%E4%B8%9A%E7%89%88,%E5%BE%AE%E4%BF%A1%E8%AF%BB%E4%B9%A6,KOReader%E7%9A%84%E6%A0%87%E6%B3%A8%E8%BD%AC%E6%8D%A2%E4%B8%BAMarkdown%E6%A0%BC%E5%BC%8F/
+[文石Boox,Kindle,静读天下专业版,微信读书,KOReader的标注转换为Markdown格式](https://andi.wang/2021/03/15/文石Boox,Kindle,静读天下专业版,微信读书,KOReader的标注转换为Markdown格式)
 
 [电子书漫画制作闲聊群1321993](https://jq.qq.com/?_wv=1027&k=AqqQIfm7)
 
