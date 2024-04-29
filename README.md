@@ -1,10 +1,10 @@
 ## 博客原文
 
-[文石Boox,Kindle,静读天下专业版,微信读书,KOReader的标注转换为Markdown格式](https://andi.wang/2021/03/15/文石Boox,Kindle,静读天下专业版,微信读书,KOReader的标注转换为Markdown格式)
+[静读天下MoonReaderPro，Kindle，KOReader，微信读书Weread标注转换为Markdown格式](https://andi.wang/2021/03/15/文石Boox,Kindle,静读天下专业版,微信读书,KOReader的标注转换为Markdown格式)
 
 [电子书漫画制作闲聊群1321993](https://jq.qq.com/?_wv=1027&k=AqqQIfm7)
 
-## 文石Boox,Kindle,静读天下专业版,微信读书,KOReader的标注转换为Markdown格式
+## 静读天下MoonReaderPro，Kindle，KOReader，微信读书Weread标注转换为Markdown格式
 
 **基本用法(win10)**
 
@@ -58,7 +58,7 @@
 
 ---
 
-## Boox,Kindle,Moon Reader pro,KOReader,Weread Clippings To Markdown
+## Kindle,Moon Reader pro,KOReader,Weread Clippings To Markdown
 
 *https://andi.wang/*
 
