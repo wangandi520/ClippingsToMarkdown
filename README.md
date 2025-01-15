@@ -2,6 +2,8 @@
 
 [静读天下MoonReaderPro，Kindle，KOReader，微信读书Weread标注转换为Markdown格式](https://andi.wang/2021/03/15/文石Boox,Kindle,静读天下专业版,微信读书,KOReader的标注转换为Markdown格式)
 
+[部分书籍标注展示，多数使用MoonReaderProToMrexptForHexo.py](https://andi.wang/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/)
+
 [电子书漫画制作闲聊群1321993](https://jq.qq.com/?_wv=1027&k=AqqQIfm7)
 
 ## 静读天下MoonReaderPro，Kindle，KOReader，微信读书Weread标注转换为Markdown格式
