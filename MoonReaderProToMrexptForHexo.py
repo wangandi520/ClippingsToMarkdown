@@ -81,10 +81,10 @@ def main(inputPath):
     for aPath in inputPath:
         if Path.is_dir(Path(aPath)):
             for eachFile in Path(aPath).glob('**/*'):
-                if (Path(eachFile).suffix == '.mrexpt'):
+                if (Path(eachFile).suffix.lower() == '.mrexpt'):
                     convertMoonReadermrexpt(eachFile)
         if Path.is_file(Path(aPath)):
-            if (Path(aPath).suffix == '.mrexpt'):
+            if (Path(aPath).suffix.lower() == '.mrexpt'):
                 convertMoonReadermrexpt(aPath)
         
 if __name__ == '__main__':
