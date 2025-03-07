@@ -2,9 +2,9 @@
 # https://github.com/wangandi520/ClippingsToMarkdown
 # Programmed by Andy
 # Moon Reader Pro 9.0
-# v0.4
+# v0.5
 # 2025.03.07
-# 转换出的markdown文件直接可以在hexo里使用
+# 转换出的markdown文件直接可以在hexo里使用，一般放在hexo\source\_posts文件夹里
 
 from pathlib import Path
 import sys
@@ -18,22 +18,18 @@ CONFIG = {
     'sort_by_location': True  # True: 按标注在书中的先后顺序，False: 按标注添加的时间顺序
 }
 
-def readfile(filename):
-    # 读取.mrexpt文件
+def readfile(filename: Path) -> list[str]:
     with open(filename, mode='r', encoding='UTF-8') as file:
-        filereadlines = file.readlines()
-    for i in range(len(filereadlines)):
-        filereadlines[i] = filereadlines[i].rstrip()
-    return filereadlines
+        return [line.rstrip() for line in file]
 
-def writefile(filename,filereadlines):
+def writefile(filename: Path, filereadlines: list[str]) -> None:
     # 写入.md文件
     newfile = open(Path(filename).parent.joinpath(Path(filename).stem + '标注.md'), mode='w', encoding='UTF-8')
     newfile.writelines(filereadlines)
     newfile.close()
     print('完成：' + str(Path(filename).name))
     
-def convertMoonReadermrexpt(filename):
+def convertMoonReadermrexpt(filename: Path) -> None:
     # hexo文章头部信息Front-matter，title，tags，categories，time
     myFrontMatter = '---\ntitle: ' + str(Path(filename).stem) + ' 标注\ntoc: true\ntags:\n- ' + '\n- '.join(CONFIG['tags']) + '\ncategories: \n- ' + CONFIG['categories'] + '\ndate: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n---'
     # 读取.mrexpt文件
@@ -79,21 +75,24 @@ def convertMoonReadermrexpt(filename):
     # 写入.md文件
     writefile(filename, outputContent)
     
-def main(inputPath):
+def main(inputPath: list[str]) -> None:
     fileType = {'.mrexpt'}
     for eachPath in inputPath[1:]:
         eachPath = Path(eachPath)
         if Path.is_dir(eachPath):
             for eachFile in eachPath.glob('**/*'):
-                if (eachFile.suffix == '.mrexpt'):
+                if eachFile.suffix in fileType:
                     convertMoonReadermrexpt(eachFile)
         if Path.is_file(eachPath):
-            if (eachPath.suffix == '.mrexpt'):
+            print(eachPath)
+            if eachPath.suffix in fileType:
                 convertMoonReadermrexpt(eachPath)
         
 if __name__ == '__main__':
     try:
         if len(sys.argv) >= 2:
             main(sys.argv)
-    except IndexError:
-        pass
+        else:
+            print('请拖拽文件到本脚本，或者命令行运行时添加文件路径')
+    except Exception as e:
+        print(f"程序运行出错: {str(e)}")
