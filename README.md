@@ -19,11 +19,13 @@
 
 新版支持拖拽，支持标注添加的评论
 
-通样的方法拖拽到MoonReaderProToMrexptForHexo.py，生成的文件可以直接在Hexo博客里使用，可以设置按照标注添加的时间顺序，还是按住标注所在书中的先后顺序，默认后者
-
 书签导出时选分享高亮与备注(TXT), 后选total commander，保存成txt文件:MoonReaderProToTXT.py, MoonReaderPro7.0ToTXT.py
 
 含章节信息，使用方法相同
+
+静读天下专业版标注（.mrexpt）转hexo博客文章（.md).py，生成的文件可以直接在Hexo博客里使用
+
+文件内CONFIG内可以设置：博客的标签，分类，主页显示的标注数量，按标注在书中的先后顺序或按标注添加的时间顺序
 
 **Kindle**
 

@@ -14,7 +14,7 @@ import time
 CONFIG = {
     'tags': ['阅读', '标注', '读书笔记'],  # hexo博客的标签
     'categories': '读书笔记',  # hexo博客的分类
-    'preview_notes': 2,  # 在主页显示的标注数量
+    'preview_notes': 2,  # 主页显示的标注数量
     'sort_by_location': True  # True: 按标注在书中的先后顺序，False: 按标注添加的时间顺序
 }
 
