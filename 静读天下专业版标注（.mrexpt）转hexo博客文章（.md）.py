@@ -12,6 +12,7 @@ import time
 
 # 把可以更改的设置都放在这里
 CONFIG = {
+    'toHexoMode': True,  # True: 转换成hexo博客的格式，False: 转换成一般markdown格式
     'tags': ['阅读', '标注', '读书笔记'],  # hexo博客的标签
     'categories': '读书笔记',  # hexo博客的分类
     'preview_notes': 2,  # 主页显示的标注数量
@@ -30,8 +31,6 @@ def writefile(filename: Path, filereadlines: list[str]) -> None:
     print('完成：' + str(Path(filename).name))
     
 def convertMoonReadermrexpt(filename: Path) -> None:
-    # hexo文章头部信息Front-matter，title，tags，categories，time
-    myFrontMatter = '---\ntitle: ' + str(Path(filename).stem) + ' 标注\ntoc: true\ntags:\n- ' + '\n- '.join(CONFIG['tags']) + '\ncategories: \n- ' + CONFIG['categories'] + '\ndate: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n---'
     # 读取.mrexpt文件
     filereadlines = readfile(filename)
     print('处理：' + str(Path(filename).name))
@@ -59,8 +58,13 @@ def convertMoonReadermrexpt(filename: Path) -> None:
         allContentSorted = allContent
     # 输出
     outputContent = []
+    # hexo文章头部信息Front-matter，title，tags，categories，time
+    if CONFIG['toHexoMode']:
+        myFrontMatter = '---\ntitle: ' + str(Path(filename).stem) + ' 标注\ntoc: true\ntags:\n- ' + '\n- '.join(CONFIG['tags']) + '\ncategories: \n- ' + CONFIG['categories'] + '\ndate: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n---\n\n'
+    else:
+        myFrontMatter = '## ' + str(Path(filename).stem) + '\n\n'
     outputContent.append(myFrontMatter)
-    outputContent.append('\n\n**共' + str(len(allContentSorted)) + '条标注**\n\n---')
+    outputContent.append('**共' + str(len(allContentSorted)) + '条标注**\n\n---')
     for myIndex in range(0, len(allContentSorted)):
         outputContent.append('\n\n> ' + allContentSorted[myIndex][1] + '\n\n')
         if len(allContentSorted[myIndex]) == 4:
@@ -70,7 +74,7 @@ def convertMoonReadermrexpt(filename: Path) -> None:
             outputContent.append('*' +allContentSorted[myIndex][2] + '*\n\n')
         outputContent.append('---')
         # 在主页显示几条标注，显示2条myIndex == 1
-        if myIndex == CONFIG['preview_notes'] - 1:
+        if myIndex == CONFIG['preview_notes'] - 1 and CONFIG['toHexoMode']:
             outputContent.append('\n\n<!-- more -->')
     # 写入.md文件
     writefile(filename, outputContent)
