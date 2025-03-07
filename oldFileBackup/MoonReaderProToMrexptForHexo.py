@@ -2,21 +2,13 @@
 # https://github.com/wangandi520/ClippingsToMarkdown
 # Programmed by Andy
 # Moon Reader Pro 9.0
-# v0.4
-# 2025.03.07
+# v0.3
+# 2024.02.08
 # 转换出的markdown文件直接可以在hexo里使用
 
 from pathlib import Path
 import sys
 import time
-
-# 把可以更改的设置都放在这里
-CONFIG = {
-    'tags': ['阅读', '标注', '读书笔记'],  # hexo博客的标签
-    'categories': '读书笔记',  # hexo博客的分类
-    'preview_notes': 2,  # 在主页显示的标注数量
-    'sort_by_location': True  # True: 按标注在书中的先后顺序，False: 按标注添加的时间顺序
-}
 
 def readfile(filename):
     # 读取.mrexpt文件
@@ -34,8 +26,12 @@ def writefile(filename,filereadlines):
     print('完成：' + str(Path(filename).name))
     
 def convertMoonReadermrexpt(filename):
-    # hexo文章头部信息Front-matter，title，tags，categories，time
-    myFrontMatter = '---\ntitle: ' + str(Path(filename).stem) + ' 标注\ntoc: true\ntags:\n- ' + '\n- '.join(CONFIG['tags']) + '\ncategories: \n- ' + CONFIG['categories'] + '\ndate: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n---'
+    # 设置文章标签tags
+    myTags = ['阅读', '标注', '读书笔记']
+    # 设置文章分类categories
+    myCategories = '读书笔记'
+    # 设置hexo文章头部信息Front-matter，title，tags，categories，time
+    myFrontMatter = '---\ntitle: ' + str(Path(filename).stem) + ' 标注\ntoc: true\ntags:\n- ' + '\n- '.join(myTags) + '\ncategories: \n- ' + myCategories + '\ndate: ' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '\n---'
     # 读取.mrexpt文件
     filereadlines = readfile(filename)
     print('处理：' + str(Path(filename).name))
@@ -57,7 +53,8 @@ def convertMoonReadermrexpt(filename):
         eachContent.append(clippingTimeTransfered)
         allContent.append(eachContent)
     # 按照标注添加的时间顺序 = 1，order by time，还是按住标注所在书中的先后顺序 = 2，order by location，排列
-    if CONFIG['sort_by_location']:
+    getOrder = 2
+    if getOrder == 2:
         allContentSorted = sorted(allContent, key=lambda x: (x[0]))
     else:
         allContentSorted = allContent
@@ -74,22 +71,21 @@ def convertMoonReadermrexpt(filename):
             outputContent.append('*' +allContentSorted[myIndex][2] + '*\n\n')
         outputContent.append('---')
         # 在主页显示几条标注，显示2条myIndex == 1
-        if myIndex == CONFIG['preview_notes'] - 1:
+        if myIndex == 1:
             outputContent.append('\n\n<!-- more -->')
     # 写入.md文件
     writefile(filename, outputContent)
     
 def main(inputPath):
-    fileType = {'.mrexpt'}
-    for eachPath in inputPath[1:]:
-        eachPath = Path(eachPath)
-        if Path.is_dir(eachPath):
-            for eachFile in eachPath.glob('**/*'):
-                if (eachFile.suffix == '.mrexpt'):
+    del inputPath[0]
+    for aPath in inputPath:
+        if Path.is_dir(Path(aPath)):
+            for eachFile in Path(aPath).glob('**/*'):
+                if (Path(eachFile).suffix.lower() == '.mrexpt'):
                     convertMoonReadermrexpt(eachFile)
-        if Path.is_file(eachPath):
-            if (eachPath.suffix == '.mrexpt'):
-                convertMoonReadermrexpt(eachPath)
+        if Path.is_file(Path(aPath)):
+            if (Path(aPath).suffix.lower() == '.mrexpt'):
+                convertMoonReadermrexpt(aPath)
         
 if __name__ == '__main__':
     try:
