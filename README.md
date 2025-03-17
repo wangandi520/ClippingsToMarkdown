@@ -7,11 +7,11 @@
 
 ## 静读天下MoonReaderPro，Kindle，KOReader，微信读书Weread标注转换为Markdown格式
 
-**基本用法(win10)**
+### 基本用法(win10)
 
-安装python:[https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe](https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe)，复制你的标注到文件夹，运行对应的py文件或者拖拽标注文件的py上
+安装python:[https://www.python.org](https://www.python.org)，复制你的标注到文件夹，运行对应的py文件或者拖拽标注文件的py上
 
-**静读天下专业版**
+### 静读天下专业版
 
 书签导出时选导出到文件(.mrexpt):MoonReaderProToMrexpt.py
 
@@ -27,7 +27,15 @@
 
 文件内CONFIG内可以设置：博客的标签，分类，主页显示的标注数量，按标注在书中的先后顺序或按标注添加的时间顺序
 
-**Kindle**
+### 文石设备
+
+2025.03.17更新BOOXOS 4.0脚本
+
+导出txt的方法：boox系统中阅读某本书，点击中间，左下目录，上方第三个按钮，左下角圆圈全选，右边按钮，导出到本地
+
+使用trae协助编写
+
+### Kindle
 
 自动检测到My Clippings.txt
 
@@ -37,23 +45,15 @@
 
 复制My Clippings.txt，运行KindleSorted.py
 
-**微信读书**
+### 微信读书
 
 我，笔记，书名，右上角，复制到剪贴板，复制到.txt文件中后运行WereadClippingsToMarkdown.py
 
-**KOReader**
+### KOReader
 
 菜单，印象笔记，选中导出到本地json文件，点到处所有笔记，复制KOReaderClipping.json，拖拽json或文件夹到KOReaderJsonALL.py。如果想每本书一个文件，请运行KOReaderJsonALLtoEachBook.py
 
 新版支持拖拽
-
-**文石设备**
-
-2025.03.17更新BOOXOS 4.0脚本
-
-导出txt的方法：boox系统中阅读某本书，点击中间，左下目录，上方第三个按钮，左下角圆圈全选，右边按钮，导出到本地
-
-使用trae协助编写
 
 ---
 
