@@ -9,6 +9,7 @@
 from pathlib import Path
 import sys
 import time
+import re
 
 # 把可以更改的设置都放在这里
 CONFIG = {
@@ -19,6 +20,13 @@ CONFIG = {
     'sort_by_location': True  # True: 按标注在书中的先后顺序，False: 按标注添加的时间顺序
 }
 
+def validFileName(oldFileName):
+    # '/ \ : * ? " < > |'
+    # 替换为下划线
+    validChars = r"[\/\\\:\*\?\"\<\>\|]"  
+    newFileName = re.sub(validChars, "", oldFileName)
+    return newFileName
+    
 def readfile(filename: Path) -> list[str]:
     with open(filename, mode='r', encoding='UTF-8') as file:
         return [line.rstrip() for line in file]
@@ -77,7 +85,7 @@ def convertMoonReadermrexpt(filename: Path) -> None:
         if myIndex == CONFIG['preview_notes'] - 1 and CONFIG['toHexoMode']:
             outputContent.append('\n\n<!-- more -->')
     # 写入.md文件
-    writefile(filename, outputContent)
+    writefile(validFileName(filename), outputContent)
     
 def main(inputPath: list[str]) -> None:
     fileType = {'.mrexpt'}
