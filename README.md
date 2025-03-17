@@ -51,6 +51,8 @@
 
 2025.03.17更新BOOXOS 4.0脚本
 
+借助AI编写
+
 ---
 
 ## Kindle,Moon Reader pro,KOReader,Weread Clippings To Markdown
