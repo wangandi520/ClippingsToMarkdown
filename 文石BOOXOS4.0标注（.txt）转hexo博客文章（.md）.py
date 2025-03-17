@@ -105,7 +105,7 @@ def getEachClippings(filename: Path) -> list[str]:
     
 def convertBooxTxt(filename: Path) -> None:
     # 读取.mrexpt文件
-    filereadlines = readfile(filename)
+    # filereadlines = readfile(filename)
     print('处理：' + str(Path(filename).name))
     # 存储所有标注
     getAllClippings = []
