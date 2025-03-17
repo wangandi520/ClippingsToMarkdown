@@ -1,9 +1,9 @@
 # encoding:utf-8
 # https://github.com/wangandi520/ClippingsToMarkdown
 # Programmed by Andy
-# Moon Reader Pro 9.0
-# v0.5
-# 2025.03.07
+# BOOX OS 4.0
+# v0.1
+# 2025.03.17
 # 转换出的markdown文件直接可以在hexo里使用，一般放在hexo\source\_posts文件夹里
 
 from pathlib import Path
