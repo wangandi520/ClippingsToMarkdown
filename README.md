@@ -13,7 +13,7 @@
 
 ### 静读天下专业版
 
-书签导出时选导出到文件(.mrexpt):MoonReaderProToMrexpt.py
+书签导出时选导出到文件，静读天下专业版标注（.mrexpt）转markdown或hexo（.md）.py
 
 静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或.mrexpt到MoonReaderProToMrexpt.py
 
@@ -29,7 +29,7 @@
 
 ### 文石设备
 
-2025.03.17更新BOOXOS 4.0脚本
+2025.03.17更新BOOXOS 4.0脚本，文石BOOXOS4.0标注（.txt）转markdown或hexo（.md）
 
 导出txt的方法：boox系统中阅读某本书，点击中间，左下目录，上方第三个按钮，左下角圆圈全选，右边按钮，导出到本地
 
