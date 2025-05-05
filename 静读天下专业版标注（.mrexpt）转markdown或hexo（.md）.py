@@ -85,7 +85,7 @@ def convertMoonReadermrexpt(filename: Path) -> None:
         if myIndex == CONFIG['preview_notes'] - 1 and CONFIG['toHexoMode']:
             outputContent.append('\n\n<!-- more -->')
     # 写入.md文件
-    writefile(validFileName(filename), outputContent)
+    writefile(validFileName(filename.name), outputContent)
     
 def main(inputPath: list[str]) -> None:
     fileType = {'.mrexpt'}
@@ -96,7 +96,6 @@ def main(inputPath: list[str]) -> None:
                 if eachFile.suffix in fileType:
                     convertMoonReadermrexpt(eachFile)
         if Path.is_file(eachPath):
-            print(eachPath)
             if eachPath.suffix in fileType:
                 convertMoonReadermrexpt(eachPath)
         
