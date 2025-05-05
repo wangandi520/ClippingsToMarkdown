@@ -15,13 +15,7 @@
 
 书签导出时选导出到文件，静读天下专业版标注（.mrexpt）转markdown或hexo（.md）.py
 
-静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或.mrexpt到MoonReaderProToMrexpt.py
-
-新版支持拖拽，支持标注添加的评论
-
-书签导出时选分享高亮与备注(TXT), 后选total commander，保存成txt文件:MoonReaderProToTXT.py, MoonReaderPro7.0ToTXT.py
-
-含章节信息，使用方法相同
+静读天下专业版中，书签，导出到文件，复制.mrexpt文件，拖拽文件夹或.mrexpt到.py文件上
 
 静读天下专业版标注（.mrexpt）转hexo博客文章（.md).py，转换后的文件可以直接在Hexo博客里使用，'toHexoMode': False时也可以转换成普通的markdown格式
 
@@ -29,7 +23,7 @@
 
 ### 文石设备
 
-2025.03.17更新BOOXOS 4.0脚本，文石BOOXOS4.0标注（.txt）转markdown或hexo（.md）
+2025.03.17更新BOOXOS 4.0脚本，文石BOOXOS4.0标注（.txt）转markdown或hexo（.md）.py
 
 导出txt的方法：boox系统中阅读某本书，点击中间，左下目录，上方第三个按钮，左下角圆圈全选，右边按钮，导出到本地
 
@@ -62,6 +56,8 @@ koreader-android-arm64-v2025.04版本测试通过
 ## Kindle,Moon Reader pro,KOReader,Weread Clippings To Markdown
 
 *https://andi.wang/*
+
+**old english translation, not update**
 
 **Basic usage(win10)**
 
