@@ -33,7 +33,15 @@
 
 导出txt的方法：boox系统中阅读某本书，点击中间，左下目录，上方第三个按钮，左下角圆圈全选，右边按钮，导出到本地
 
-使用trae协助编写
+### KOReader
+
+koreader标注（.json）转markdown或hexo（.md）.py
+
+导出koreader标注的方法：菜单第四项工具，导出标注，选择格式和服务，json。导出标注，导出本书所有笔记。
+
+导出后的json文件位置在根目录koreader\clipboard
+
+koreader-android-arm64-v2025.04版本测试通过
 
 ### Kindle
 
@@ -48,12 +56,6 @@
 ### 微信读书
 
 我，笔记，书名，右上角，复制到剪贴板，复制到.txt文件中后运行WereadClippingsToMarkdown.py
-
-### KOReader
-
-菜单，印象笔记，选中导出到本地json文件，点到处所有笔记，复制KOReaderClipping.json，拖拽json或文件夹到KOReaderJsonALL.py。如果想每本书一个文件，请运行KOReaderJsonALLtoEachBook.py
-
-新版支持拖拽
 
 ---
 
