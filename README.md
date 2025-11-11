@@ -10,6 +10,8 @@
 ### 基本用法(win10)
 
 安装python:[https://www.python.org](https://www.python.org)，复制你的标注到文件夹，运行对应的py文件或者拖拽标注文件的py上
+如果失败，尝试在命令提示符cmd中，输入py文件路径 空格 标注文件路径
+例如：d:\moonreader.py d:\my.mrexpt
 
 ### 静读天下专业版
 
