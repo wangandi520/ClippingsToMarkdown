@@ -7,11 +7,14 @@
 
 ## 静读天下MoonReaderPro，Kindle，KOReader，微信读书Weread标注转换为Markdown格式
 
-### 基本用法(win10)
+### 基本用法(win11)
 
 安装python:[https://www.python.org](https://www.python.org)，复制你的标注到文件夹，运行对应的py文件或者拖拽标注文件的py上
 如果失败，尝试在命令提示符cmd中，输入py文件路径 空格 标注文件路径
 例如：d:\moonreader.py d:\my.mrexpt
+附带一个测试文件：王小波真正大全集15册.mrexpt
+拖拽到静读天下专业版标注（.mrexpt）转markdown或hexo（.md）.py
+会生成王小波真正大全集15册标注.md
 
 ### 静读天下专业版
 
