@@ -11,9 +11,11 @@
 
 安装python:[https://www.python.org](https://www.python.org)，复制你的标注到文件夹，运行对应的py文件或者拖拽标注文件的py上
 
-如果失败，尝试在命令提示符cmd中，输入py文件路径 空格 标注文件路径
+如果失败，尝试在命令提示符cmd中，输入：python.exe py文件路径 标注文件路径
 
-例如：d:\moonreader.py d:\my.mrexpt
+例如：python.exe d:\moonreader.py d:\my.mrexpt
+
+如果失败，尝试输入python，如果没进到python程序里，搜索关键词：python环境变量，或者把python.exe的完整路径写上
 
 附带一个测试文件：王小波真正大全集15册.mrexpt
 
