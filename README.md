@@ -5,7 +5,7 @@
 [部分书籍标注展示，多数静读天下专业版](https://andi.wang/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/)
 
 
-## 静读天下MoonReaderPro，Kindle，KOReader，微信读书Weread标注转换为Markdown格式
+## 静读天下MoonReaderPro，Kindle，KOReader标注转换为Markdown格式
 
 ### 基本用法(win11)
 
